@@ -2,7 +2,10 @@
    1. 기본 초기화 (Base)
    ========================================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* 클릭 시 제목 위에 80px 여유 공간 확보 */
+}
 
 body {
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
@@ -272,6 +275,8 @@ section { padding: 80px 20px; width: 100%; }
 .cert-card, .volunteer-card {
   background: #fff; padding: 25px; border-radius: 16px;
   border: 1px solid #e2e8f0; text-align: left; transition: 0.3s;
+  height: 100%; /* 카드 높이 균일하게 맞춤 */
+  display: flex; flex-direction: column; justify-content: space-between; /* 내용 분배 */
 }
 .cert-card:hover, .volunteer-card:hover { transform: translateY(-3px); border-color: #93c5fd; }
 .cert-card.highlight { background: #eff6ff; border-color: #bfdbfe; }
@@ -315,3 +320,11 @@ section { padding: 80px 20px; width: 100%; }
 /* 스크롤 애니메이션 초기 상태 */
 .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .hero-profile { width: 120px; height: 120px; } /* 프로필 사진 축소 */
+  .name { font-size: 2.2rem; } /* 이름 크기 조절 */
+  section { padding: 60px 15px; } /* 모바일에서 섹션 상하 간격 줄임 */
+  .section-title { font-size: 1.8rem; } /* 제목 크기 최적화 */
+}
