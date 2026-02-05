@@ -12,6 +12,17 @@ body {
   background-color: #ffffff;
 }
 
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">KIM JONGUK</a>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="mailto:your@email.com">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
 /* 2. Hero 섹션 - 상단 전체 배경 */
 .hero {
   min-height: 100vh;
