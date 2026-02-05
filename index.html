@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | Kim Jonguk</title>
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -13,74 +14,72 @@
       헬스케어·임상 데이터를 기반으로<br />
       문제를 구조화하고 해결하는 연구자
     </p>
-
-    <a href="#projects" class="btn">
-      프로젝트 보기
-    </a>
+    <a href="#projects" class="btn">프로젝트 보기</a>
   </header>
-<section class="about">
-  <h2>About</h2>
-  <p>
-    헬스케어 및 임상 데이터를 기반으로 문제를 구조화하고,
-    근거 중심으로 해결책을 설계하는 연구자입니다.<br />
-    근골격계 평가, 통증 지표(NRS/VAS), 동작 분석 데이터를
-    분석·시각화하며 실무 적용 가능한 결과를 만드는 데 집중해왔습니다.
-  </p>
-</section>
 
+  <section class="about">
+    <h2>About</h2>
+    <p>
+      헬스케어 및 임상 데이터를 기반으로 문제를 구조화하고,
+      근거 중심으로 해결책을 설계하는 연구자입니다.<br />
+      근골격계 평가, 통증 지표(NRS/VAS), 동작 분석 데이터를
+      분석·시각화하며 실무 적용 가능한 결과를 만드는 데 집중해왔습니다.
+    </p>
+  </section>
 
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>근골격계 통증 평가 AI</h3>
-      <p>
-        NRS, VAS 기반 설문 데이터를 활용해
-        통증 패턴을 분석하고 예측 모델을 구축
-      </p>
-      <span class="tag">Python</span>
-      <span class="tag">Clinical Data</span>
-    </div>
-
-    <div class="project-card">
-      <h3>운동 동작 분석 시스템</h3>
-      <p>
-        관절 가동범위 데이터를 시각화하여
-        재활 진행 상태를 정량적으로 평가
-      </p>
-      <span class="tag">Biomechanics</span>
-      <span class="tag">Data Visualization</span>
-    </div>
-
-    <div class="project-card">
-      <h3>헬스케어 앱 콘텐츠 설계</h3>
-      <p>
-        임상 근거 기반 운동·통증 관리 콘텐츠 기획
-        및 사용자
-
-</body>
-
-
-  <section>
+  <section id="projects" class="projects">
     <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>근골격계 통증 평가 AI</h3>
+        <p>NRS, VAS 기반 설문 데이터를 활용해 통증 패턴을 분석하고 예측 모델을 구축</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">Clinical Data</span>
+        </div>
+      </div>
 
-    <div class="project">
-      <h3>임상 데이터 관리 프로세스 개선</h3>
-      <p>
-        데이터 누락 문제 해결을 위해 정제 및 관리 구조를 설계하고<br>
-        검토 시간을 약 30% 단축함
-      </p>
-    </div>
+      <div class="project-card">
+        <h3>운동 동작 분석 시스템</h3>
+        <p>관절 가동범위 데이터를 시각화하여 재활 진행 상태를 정량적으로 평가</p>
+        <div class="tags">
+          <span class="tag">Biomechanics</span>
+          <span class="tag">Data Visualization</span>
+        </div>
+      </div>
 
-    <div class="project">
-      <h3>AI 이미지 → 비디오 변환</h3>
-      <p>
-        이미지 기반 입력을 영상으로 확장하는 AI 파이프라인 실험 및 구현
-      </p>
+      <div class="project-card">
+        <h3>헬스케어 앱 콘텐츠 설계</h3>
+        <p>임상 근거 기반 운동·통증 관리 콘텐츠 기획 및 사용자 경험 최적화</p>
+        <div class="tags">
+          <span class="tag">UX Design</span>
+          <span class="tag">Clinical Evidence</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>임상 데이터 관리 프로세스 개선</h3>
+        <p>데이터 누락 문제 해결을 위한 정제 구조 설계로 검토 시간 약 30% 단축</p>
+        <div class="tags">
+          <span class="tag">Data Cleaning</span>
+          <span class="tag">Process Optimization</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>AI 이미지 → 비디오 변환</h3>
+        <p>이미지 기반 입력을 영상으로 확장하는 AI 파이프라인 실험 및 구현</p>
+        <div class="tags">
+          <span class="tag">AI Pipeline</span>
+          <span class="tag">Generative AI</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
     <p>Email: your@email.com</p>
-    <p>GitHub: https://github.com/yourname</p>
+    <p>GitHub: <a href="https://github.com/yourname">github.com/yourname</a></p>
   </footer>
 </body>
 </html>
