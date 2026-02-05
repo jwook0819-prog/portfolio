@@ -283,36 +283,56 @@
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
-        <h2 class="modal-main-title">학생 불균형 체형 예방사업 실증 및 운영</h2>
-        <div class="modal-summary-grid">
-            <div class="summary-item"><strong>사업처</strong> 경기도교육청 (40개교)</div>
-            <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선, 7,281명 검진 완료</div>
+      <h2 class="modal-main-title">학생 체형 불균형 분석 대시보드 및 예방사업</h2>
+      
+      <div class="modal-summary-grid" style="align-items: center;">
+        <div class="summary-item"><strong>사업처</strong> 경기도교육청 (40개교)</div>
+        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선, 7,281명 데이터 분석</div>
+        <div class="summary-actions" style="margin-left: auto; display: flex; gap: 10px;">
+           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드 보기</a>
+           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 GitHub 코드</a>
         </div>
-        <div class="modal-section">
-            <h3 class="part-title">데이터 기반 사업 성과</h3>
-            <div class="modal-grid">
-                <div class="grid-text">
-                    <p>대규모 인원을 대상으로 AI 솔루션의 실제 개선 효과를 입증했습니다.</p>
-                    <ul class="detail-list">
-                        <li><strong>실증 규모:</strong> 학생 7,281명 대상 1, 2차 측정 및 교육</li>
-                        <li><strong>체형 개선:</strong> 어깨 균형도 평균 14% 상승 (53% → 67%)</li>
-                        <li><strong>만족도:</strong> 교원 대상 연수 만족도 94% 달성</li>
-                    </ul>
-                </div>
-                <div class="grid-stats-container">
-                    <div class="grid-images">
-                        <div class="stat-card-mini highlight-card">
-                            <span class="stat-num">7,281<span>명</span></span>
-                            <span class="stat-txt">누적 측정</span>
-                        </div>
-                        <div class="stat-card-mini highlight-card">
-                            <span class="stat-num">14<span>%↑</span></span>
-                            <span class="stat-txt">어깨 개선율</span>
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <div class="modal-section" style="margin-top: 20px;">
+         <h3 class="part-title"><span class="part-label">Tech Stack</span> 데이터 분석 및 시각화 기술</h3>
+         <div class="skill-tags" style="justify-content: flex-start;">
+            <span class="skill-tag">Python 3.9</span>
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Plotly</span>
+            <span class="skill-tag">GitHub Actions</span>
+         </div>
+      </div>
+
+      <div class="modal-section">
+        <h3 class="part-title">주요 분석 기능 및 성과</h3>
+        <div class="modal-grid">
+          <div class="grid-text">
+            <p>8,000여 명의 학생 데이터를 분석하여 성장기 체형 불균형을 추적하고 시각화하는 웹 대시보드를 구축했습니다.</p>
+            <ul class="detail-list" style="margin-top:15px;">
+              <li><strong>전신 균형 시각화:</strong> 6대 관절(목, 어깨, 허리 등)의 밸런스를 <strong>레이더 차트</strong>로 시각화하여 직관적 파악 가능</li>
+              <li><strong>상관관계 분석:</strong> 신체 부위 간 불균형 전이 현상을 <strong>히트맵(Heatmap)</strong>으로 통계적 분석</li>
+              <li><strong>성과 추적:</strong> 1학기 vs 2학기 데이터 비교를 통해 운동 처방 후 <strong>어깨 균형 14% 개선</strong> 입증</li>
+              <li><strong>데이터 보안:</strong> 개인정보 비식별화 및 일반화(Generalization) 처리로 안전한 데이터 파이프라인 구축</li>
+            </ul>
+          </div>
+          
+          <div class="grid-stats-container">
+            <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
+               <div class="stat-card-mini highlight-card" style="width:100%;">
+                 <span class="stat-num">Data Viz</span>
+                 <span class="stat-txt">Streamlit 기반 대화형 대시보드</span>
+               </div>
+               <div class="stat-card-mini highlight-card" style="width:100%;">
+                  <span class="stat-num">14<span>%↑</span></span>
+                  <span class="stat-txt">체형 불균형 개선율 달성</span>
+               </div>
             </div>
+          </div>
         </div>
+      </div>
+
     </div>
   </div>
 </div>
