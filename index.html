@@ -1,85 +1,618 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Kim Jonguk</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <title>Kim Jongwook | Healthcare · Rehabilitation · R&D Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <header class="hero">
-    <h1>김종욱</h1>
-    <p class="subtitle">
-      헬스케어·임상 데이터를 기반으로<br />
-      문제를 구조화하고 해결하는 연구자
-    </p>
-    <a href="#projects" class="btn">프로젝트 보기</a>
-  </header>
 
-  <section class="about">
-    <h2>About</h2>
-    <p>
-      헬스케어 및 임상 데이터를 기반으로 문제를 구조화하고,
-      근거 중심으로 해결책을 설계하는 연구자입니다.<br />
-      근골격계 평가, 통증 지표(NRS/VAS), 동작 분석 데이터를
-      분석·시각화하며 실무 적용 가능한 결과를 만드는 데 집중해왔습니다.
-    </p>
-  </section>
+<header class="hero">
+  <div class="hero-main">
+    <div class="profile-container">
+        <img src="./images/profile.png" alt="김종욱 프로필 사진" class="hero-profile" />
+    </div>
+    <h1 class="name">KIM JONGWOOK</h1>
+    <p class="subtitle">Healthcare · Exercise Rehabilitation · R&D</p>
 
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>근골격계 통증 평가 AI</h3>
-        <p>NRS, VAS 기반 설문 데이터를 활용해 통증 패턴을 분석하고 예측 모델을 구축</p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Clinical Data</span>
+    <div class="contact">
+      <a href="mailto:jwook0819@naver.com">📧 jwook0819@naver.com</a>
+      <a href="tel:+821094264567">📞 +82-10-9426-4567</a>
+    </div>
+
+    <nav class="nav-cards">
+      <a href="#about" class="nav-card"><span class="nav-title">About</span></a>
+      <a href="#skills" class="nav-card"><span class="nav-title">Skills</span></a>
+      <a href="#projects" class="nav-card"><span class="nav-title">Projects</span></a>
+      <a href="#career" class="nav-card"><span class="nav-title">Career</span></a>
+      <a href="#education" class="nav-card"><span class="nav-title">Education</span></a>
+      <a href="#certification" class="nav-card"><span class="nav-title">Cert</span></a>
+      <a href="#Volunteer" class="nav-card"><span class="nav-title">Volunteer</span></a>
+    </nav>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+        <p>
+          국가전문자격 <strong>건강운동관리사</strong>로서 임상 · 헬스케어 · 운동재활 현장에서 실무 경험을 쌓아왔습니다.<br><br>
+          AI 근골격계 검진 시스템 개발, 임상 검증, 데이터 기반 개선에 참여하며
+          연구 결과를 실제 서비스와 제품으로 연결하는 역할을 수행해왔습니다.<br><br>
+          <span class="highlight-text">측정 → 분석 → 개선</span> 구조 설계를 강점으로 합니다.
+        </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="bg-soft-section">
+  <div class="section-container">
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      
+      <div class="skill-category reveal">
+        <div class="skill-icon">📊</div>
+        <h3>Data & Research</h3>
+        <p class="skill-desc">데이터 분석 및 연구 방법론 활용</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Python (Pandas/NumPy)</span>
+          <span class="skill-tag">SPSS</span>
+          <span class="skill-tag">Excel (Advanced)</span>
+          <span class="skill-tag">Research Design</span>
+          <span class="skill-tag">논문 작성</span>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>운동 동작 분석 시스템</h3>
-        <p>관절 가동범위 데이터를 시각화하여 재활 진행 상태를 정량적으로 평가</p>
-        <div class="tags">
-          <span class="tag">Biomechanics</span>
-          <span class="tag">Data Visualization</span>
+      <div class="skill-category reveal">
+        <div class="skill-icon">🏥</div>
+        <h3>Clinical & Rehab</h3>
+        <p class="skill-desc">현장 실무 및 임상 평가 능력</p>
+        <div class="skill-tags">
+          <span class="skill-tag">근골격계 검진</span>
+          <span class="skill-tag">운동부하검사(GXT)</span>
+          <span class="skill-tag">재활 운동 처방</span>
+          <span class="skill-tag">Taping</span>
+          <span class="skill-tag">CPR / First Aid</span>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>헬스케어 앱 콘텐츠 설계</h3>
-        <p>임상 근거 기반 운동·통증 관리 콘텐츠 기획 및 사용자 경험 최적화</p>
-        <div class="tags">
-          <span class="tag">UX Design</span>
-          <span class="tag">Clinical Evidence</span>
+      <div class="skill-category reveal">
+        <div class="skill-icon">💻</div>
+        <h3>Tools & Cowork</h3>
+        <p class="skill-desc">문서 작성 및 협업 툴 활용</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Slack</span>
+          <span class="skill-tag">PowerPoint</span>
+          <span class="skill-tag">Figma (기초)</span>
+          <span class="skill-tag">Git/Github</span>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>임상 데이터 관리 프로세스 개선</h3>
-        <p>데이터 누락 문제 해결을 위한 정제 구조 설계로 검토 시간 약 30% 단축</p>
-        <div class="tags">
-          <span class="tag">Data Cleaning</span>
-          <span class="tag">Process Optimization</span>
+    </div>
+  </div>
+</section>
+
+<section id="workflow">
+  <div class="section-container">
+    <h2 class="section-title">My Workflow</h2>
+    <p class="section-subtitle">데이터에 기반하여 임상적 근거를 만드는 문제 해결 프로세스입니다.</p>
+    
+    <div class="workflow-steps">
+      <div class="step-card reveal">
+        <div class="step-header">
+          <span class="step-num">01</span>
+          <h3 class="step-title">Data Acquisition</h3>
+        </div>
+        <p class="step-desc">
+          <strong>정량적 측정:</strong><br>
+          Motion Capture, EEG, ROM 등<br>
+          객관적 지표를 활용해<br>
+          신뢰할 수 있는 데이터를 수집합니다.
+        </p>
+      </div>
+
+      <div class="step-arrow">➜</div>
+
+      <div class="step-card reveal">
+        <div class="step-header">
+          <span class="step-num">02</span>
+          <h3 class="step-title">AI Analysis</h3>
+        </div>
+        <p class="step-desc">
+          <strong>알고리즘 분석:</strong><br>
+          수집된 데이터를 Python/SPSS로 가공하고<br>
+          임상적 기준(Reference)과 대조하여<br>
+          문제의 원인을 도출합니다.
+        </p>
+      </div>
+
+      <div class="step-arrow">➜</div>
+
+      <div class="step-card reveal">
+        <div class="step-header">
+          <span class="step-num">03</span>
+          <h3 class="step-title">Optimal Solution</h3>
+        </div>
+        <p class="step-desc">
+          <strong>맞춤형 솔루션:</strong><br>
+          분석 결과에 따른 최적의 운동 처방 및<br>
+          디지털 치료제(DTx) 프로토콜을<br>
+          설계하고 적용합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="bg-soft-section">
+  <div class="section-container">
+    <h2 class="section-title">Project Archive</h2>
+    <p class="section-subtitle">임상 기획부터 AI 솔루션 개발, 글로벌 PM까지의 실무 기록입니다.</p>
+
+    <div class="project-list">
+      
+      <div class="card project-card standard reveal" data-modal="dxDtxModal">
+        <div class="project-thumb">
+          <img src="./images/project1-thumb.png" alt="Dx & DTx">
+        </div>
+        <div class="project-content">
+          <span class="category-tag">Solution R&D</span>
+          <h3>AI 근골격계 Dx & DTx 통합 솔루션</h3>
+          <p class="project-desc">Computer Vision 기반 검진 로직 및 맞춤형 운동처방 APP의 기술 설계 및 임상 검증을 수행했습니다.</p>
+          <div class="tags">
+            <span class="tag">AI Algorithm</span>
+            <span class="tag">ISO 13485</span>
+          </div>
         </div>
       </div>
 
-      <div class="project-card">
-        <h3>AI 이미지 → 비디오 변환</h3>
-        <p>이미지 기반 입력을 영상으로 확장하는 AI 파이프라인 실험 및 구현</p>
-        <div class="tags">
-          <span class="tag">AI Pipeline</span>
-          <span class="tag">Generative AI</span>
+      <div class="card project-card standard reveal" data-modal="cesProjectModal">
+        <div class="project-thumb">
+          <img src="./images/ces-field.png" alt="CES 2026">
+        </div>
+        <div class="project-content">
+          <span class="category-tag">Global PM · Business</span>
+          <h3>CES 2026 글로벌 기술 전시 총괄 PM</h3>
+          <p class="project-desc">전시 전략 수립부터 기술 시나리오 설계, 현지 운영 및 바이어 리드 확보까지 프로젝트 전 과정을 총괄했습니다.</p>
+          <div class="tags">
+            <span class="tag">Project Management</span>
+            <span class="tag">Global Launch</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card project-card standard reveal" data-modal="publicProjectModal">
+        <div class="project-thumb">
+            <div class="thumb-placeholder">Clinical Proof</div>
+        </div>
+        <div class="project-content">
+          <span class="category-tag">Public Business · Data</span>
+          <h3>학생 불균형 체형 예방사업 실증 및 운영</h3>
+          <p class="project-desc">경기도교육청 8,000명 대상 대규모 데이터 분석을 통해 AI 솔루션의 정량적 개선 효과를 입증했습니다.</p>
+          <div class="tags">
+            <span class="tag">Data Analysis</span>
+            <span class="tag">어깨균형 14%↑</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card project-card standard reveal" data-modal="sbsProjectModal">
+        <div class="project-thumb">
+          <img src="./images/sbs-thumb.png" alt="SBS 육체실험2 출연"> 
+        </div>
+        <div class="project-content">
+          <span class="category-tag">Media & Research Design</span>
+          <h3>SBS 육체실험2 연구 디자인 및 출연</h3>
+          <p class="project-desc">맨발걷기에 따른 뇌파 변화 연구 설계 및 실험 총괄. 방송 제작진과의 협업을 통해 과학적 실증 과정을 대중에게 전달했습니다.</p>
+          <div class="tags">
+            <span class="tag">Research Design</span>
+            <span class="tag">최고 시청률 2%</span>
+            <span class="tag">EEG Analysis</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="dxDtxModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <div class="modal-inner">
+        <h2 class="modal-main-title">AI 근골격계 Dx & DTx 통합 솔루션 개발</h2>
+        <div class="modal-summary-grid">
+            <div class="summary-item"><strong>역할</strong> 임상 로직 설계, 알고리즘 검증, UI/UX 기획</div>
+            <div class="summary-item"><strong>핵심기술</strong> Computer Vision 관절 추출, 맞춤형 운동처방 로직</div>
+        </div>
+        <div class="modal-section">
+            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 기능 개발</h3>
+            <div class="modal-sub-section">
+                <h4>자세검사 (Posture Analysis)</h4>
+                <div class="modal-grid">
+                    <div class="grid-text"><p>전/후/측면 정렬 분석 및 결과 시각화 로직을 구축했습니다.</p></div>
+                    <div class="grid-images">
+                        <div class="img-wrapper"><img src="./images/posture1-1.png" alt="자세검사1" class="zoomable"></div>
+                        <div class="img-wrapper"><img src="./images/posture1-2.png" alt="자세검사2" class="zoomable"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-sub-section" style="margin-top:25px;">
+                <h4>관절기능검사 (ROM)</h4>
+                <div class="modal-grid">
+                    <div class="grid-text"><p>주요 관절의 가동범위 측정 및 임상 데이터 분석 기능을 개발했습니다.</p></div>
+                    <div class="grid-images">
+                        <div class="img-wrapper"><img src="./images/joint-1.png" alt="관절기능1" class="zoomable"></div>
+                        <div class="img-wrapper"><img src="./images/joint-2.png" alt="관절기능2" class="zoomable"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-sub-section" style="margin-top:25px;">
+                <h4>Movement Screening</h4>
+                <div class="modal-grid">
+                    <div class="grid-text"><p>동적 움직임 분석을 통한 보상 작용 탐지 로직을 설계했습니다.</p></div>
+                    <div class="grid-images">
+                        <div class="img-wrapper" style="grid-column: span 2;"><img src="./images/movement-1.png" alt="움직임분석" class="zoomable"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-section border-top">
+            <h3 class="part-title"><span class="part-label">DTx</span> AI 근골격계 디지털 치료제 개발</h3>
+            <div class="modal-grid">
+                <div class="grid-text">
+                    <p>개인 맞춤 운동처방 알고리즘 및 앱 UI/UX 기획을 진행했습니다.</p>
+                </div>
+                <div class="grid-images">
+                    <div class="img-wrapper" style="grid-column: span 2;"><img src="./images/project1-thumb.png" alt="DTx 앱 화면" class="zoomable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="publicProjectModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <div class="modal-inner">
+        <h2 class="modal-main-title">학생 불균형 체형 예방사업 실증 및 운영</h2>
+        <div class="modal-summary-grid">
+            <div class="summary-item"><strong>사업처</strong> 경기도교육청 (40개교)</div>
+            <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선, 7,281명 검진 완료</div>
+        </div>
+        <div class="modal-section">
+            <h3 class="part-title">데이터 기반 사업 성과</h3>
+            <div class="modal-grid">
+                <div class="grid-text">
+                    <p>대규모 인원을 대상으로 AI 솔루션의 실제 개선 효과를 입증했습니다.</p>
+                    <ul class="detail-list">
+                        <li><strong>실증 규모:</strong> 학생 7,281명 대상 1, 2차 측정 및 교육</li>
+                        <li><strong>체형 개선:</strong> 어깨 균형도 평균 14% 상승 (53% → 67%)</li>
+                        <li><strong>만족도:</strong> 교원 대상 연수 만족도 94% 달성</li>
+                    </ul>
+                </div>
+                <div class="grid-stats-container">
+                    <div class="grid-images">
+                        <div class="stat-card-mini highlight-card">
+                            <span class="stat-num">7,281<span>명</span></span>
+                            <span class="stat-txt">누적 측정</span>
+                        </div>
+                        <div class="stat-card-mini highlight-card">
+                            <span class="stat-num">14<span>%↑</span></span>
+                            <span class="stat-txt">어깨 개선율</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="cesProjectModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <div class="modal-inner">
+        <h2 class="modal-main-title">CES 2026 글로벌 기술 전시 총괄 프로젝트</h2>
+        <div class="modal-summary-grid">
+            <div class="summary-item"><strong>성과</strong> 글로벌 바이어 Lead 확보 및 기술 시연 성공</div>
+        </div>
+        <div class="modal-section">
+            <div class="modal-grid">
+                <div class="grid-text">
+                    <p>전시 전략 수립부터 기술 시나리오 설계, 현지 운영 전 과정을 총괄했습니다.</p>
+                </div>
+                <div class="grid-images">
+                    <div class="img-wrapper"><img src="./images/ces-field.png" alt="현장" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/ces-demo.png" alt="시연" class="zoomable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="sbsProjectModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <div class="modal-inner">
+        <h2 class="modal-main-title">SBS 육체실험2: 맨발걷기의 과학적 실증</h2>
+        <div class="modal-summary-grid">
+            <div class="summary-item"><strong>역할</strong> 연구 디자인 총괄 및 전문가 출연</div>
+            <div class="summary-item"><strong>성과</strong> 순간 최고 시청률 2.0% 달성</div>
+        </div>
+        
+        <div class="modal-section">
+            <h3 class="part-title">수행 및 협업 내용</h3>
+            <div class="modal-grid">
+                <div class="grid-text">
+                    <ul class="detail-list">
+                        <li><strong>실험 설계:</strong> 맨발걷기 전후 뇌파(EEG) 변화를 측정하는 과학적 프로토콜 설계</li>
+                        <li><strong>제작 협업:</strong> PD, 작가와 소통하며 전문적인 연구 내용을 방송 언어로 시각화</li>
+                        <li><strong>데이터 분석:</strong> 실험 참여자들의 뇌파 지표 분석을 통한 건강 증진 효과 입증</li>
+                    </ul>
+                    
+                    <div class="modal-links" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+                        <a href="https://programs.sbs.co.kr/culture/sbsspecial/vod/53591/22000552190" target="_blank" class="tag" style="background:#2563eb; color:white; border:none; padding:10px 15px; text-decoration:none;">📺 SBS 다시보기</a>
+                    </div>
+                </div>
+                <div class="grid-images">
+                    <div class="img-wrapper"><img src="./images/sbs-eeg-1.png" alt="뇌파 측정 장면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/sbs-field-1.png" alt="촬영 현장" class="zoomable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<section id="career">
+  <div class="section-container">
+    <h2 class="section-title">Career</h2>
+    <div class="timeline">
+      <div class="timeline-item highlight reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-period">2025.04 ~ 재직중</span>
+          <h3>SYM헬스케어(주) <span class="dept">| 임상지원팀</span></h3>
+          <ul>
+            <li>AI 근골격계 검진 및 처방 장비 임상 개발 및 정부 R&D 과제 관리</li>
+            <li>글로벌 전시 운영: <strong>CES 2026</strong>, REHA HOMECARE 기술 시연 총괄</li>
+            <li>품질경영시스템 운영: <strong>ISO 13485:2016</strong> 규격 품질 관리</li>
+          </ul>
+          <a href="https://symhc.co.kr/" target="_blank" class="timeline-link">Website 바로가기 →</a>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-period">2024.10 ~ 2025.04</span>
+          <h3>힐트코리아 <span class="dept">| 교육임상팀</span></h3>
+          <ul>
+            <li>KIMES 부스 운영 및 물리치료 장비 임상 교육</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-period">2022.09 ~ 2024.09</span>
+          <h3>국민체력100 <span class="dept">| 운동처방사</span></h3>
+          <ul>
+            <li>개인 맞춤형 운동처방 및 체력 데이터 분석</li>
+          </ul>
+          <a href="https://nfa.kspo.or.kr/" target="_blank" class="timeline-link">Website 바로가기 →</a>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-period">2022.02 ~ 2022.09</span>
+          <h3>중랑구 보건소 <span class="dept">| 의약과</span></h3>
+          <ul>
+            <li>지역사회 건강증진 사업 기획 및 운동 교육 프로그램 운영</li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>Email: your@email.com</p>
-    <p>GitHub: <a href="https://github.com/yourname">github.com/yourname</a></p>
-  </footer>
+<section id="education" class="bg-soft-section">
+    <div class="section-container">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-timeline">
+          <div class="edu-item highlight reveal">
+            <div class="edu-card">
+              <div class="edu-header"><h3>한국체육대학교 대학원</h3><span class="edu-period">2022 ~ 2024</span></div>
+              <p class="edu-major">스포츠재활학과 (석사)</p>
+              <ul class="edu-detail">
+                <li>학점 : 4.33 / 4.5</li>
+                <li>학위논문 : 일회성 맨발걷기에 따른 뇌파와 대사 변화 연구</li>
+                <li class="edu-link"><a href="http://knsu.dcollection.net/common/orgView/200000806527" target="_blank">🔗 논문 보기</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="edu-item reveal">
+            <div class="edu-card">
+              <div class="edu-header"><h3>성결대학교</h3><span class="edu-period">2016 ~ 2022</span></div>
+              <p class="edu-major">체육교육과 (학사)</p>
+              <ul class="edu-detail"><li>학점 : 3.77 / 4.5 (4학년 전학기 수석)</li></ul>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+
+<section id="certification">
+  <div class="section-container">
+    <h2 class="section-title">Certification</h2>
+    <div class="cert-grid">
+      <div class="cert-card highlight">
+        <h3>건강운동관리사</h3>
+        <p class="cert-org">문화체육관광부</p>
+        <span class="cert-year">2022</span>
+      </div>
+      <div class="cert-card">
+        <h3>2급 교원자격증</h3>
+        <p class="cert-org">교육부</p>
+        <span class="cert-year">2022</span>
+      </div>
+      <div class="cert-card">
+        <h3>2급 생활스포츠지도사</h3>
+        <p class="cert-org">보디빌딩 | 문체부</p>
+        <span class="cert-year">2019</span>
+      </div>
+      <div class="cert-card">
+        <h3>유소년스포츠지도사</h3>
+        <p class="cert-org">보디빌딩 | 문체부</p>
+        <span class="cert-year">2022</span>
+      </div>
+      <div class="cert-card">
+        <h3>노인스포츠지도사</h3>
+        <p class="cert-org">보디빌딩 | 문체부</p>
+        <span class="cert-year">2021</span>
+      </div>
+      <div class="cert-card">
+        <h3>1종보통운전면허</h3>
+        <p class="cert-org">경찰청</p>
+        <span class="cert-year">2016</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="Volunteer" class="bg-soft-section">
+  <div class="section-container">
+    <h2 class="section-title">Volunteer</h2>
+    <p class="section-subtitle">전문 지식의 환원과 나눔을 통한 사회적 가치 실현</p>
+
+    <div class="volunteer-grid">
+      
+      <div class="volunteer-card reveal">
+        <span class="vol-tag">Community Service</span>
+        <h3>안양시 청년 봉사 활동</h3>
+        <p class="vol-org">안양시 자원봉사센터</p>
+        <p class="vol-desc">
+          지역사회 환경 개선 및 청년 주도 봉사 프로그램 참여 <strong>(총 34시간)</strong>
+        </p>
+        <span class="vol-year">2022</span>
+      </div>
+
+      <div class="volunteer-card reveal">
+        <span class="vol-tag">교육 봉사</span>
+        <h3>교육봉사 (재활스포츠)</h3>
+        <p class="vol-org">재활스포츠센터 체력단련실</p>
+        <p class="vol-desc">
+          장애인 및 교통약자를 위한 체력단련 프로그램 운영 지원 및 운동 보조 <strong>(총 85시간)</strong>
+        </p>
+        <span class="vol-year">2016</span>
+      </div>
+
+      <div class="volunteer-card reveal">
+        <span class="vol-tag">Global Activity</span>
+        <h3>태국 해외봉사</h3>
+        <p class="vol-org">성결대학교 봉사센터</p>
+        <p class="vol-desc">
+          현지 아동 대상 교육 및 문화 교류 활동을 통한 글로벌 커뮤니케이션 역량 강화
+        </p>
+        <span class="vol-year">2016</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<button id="toTopBtn">↑</button>
+
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-target">
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-target');
+    const toTopBtn = document.getElementById('toTopBtn');
+    const revealElements = document.querySelectorAll('.reveal');
+
+    function closeAllLayers() {
+        document.querySelectorAll('.modal, .lightbox').forEach(el => el.classList.remove('show'));
+        document.body.style.overflow = "auto";
+    }
+
+    document.addEventListener('click', function(e) {
+        // 모달 열기
+        const card = e.target.closest('.project-card');
+        if (card) {
+            const modalId = card.getAttribute('data-modal');
+            const targetModal = document.getElementById(modalId);
+            if (targetModal) {
+                targetModal.classList.add('show');
+                document.body.style.overflow = "hidden";
+            }
+            return;
+        }
+
+        // 이미지 확대 (줌)
+        if (e.target.classList.contains('zoomable')) {
+            e.stopPropagation();
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = e.target.src;
+                lightbox.classList.add('show');
+                document.body.style.overflow = "hidden";
+            }
+            return;
+        }
+
+        // 라이트박스 닫기
+        if (e.target.closest('#lightbox')) {
+            lightbox.classList.remove('show');
+            if (!document.querySelector('.modal.show')) document.body.style.overflow = "auto";
+            return;
+        }
+
+        // 모달 닫기
+        if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
+            closeAllLayers();
+        }
+    });
+
+    // 스크롤 시 나타나는 애니메이션
+    function checkReveal() {
+        const triggerBottom = window.innerHeight / 5 * 4;
+        revealElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < triggerBottom) el.classList.add('active');
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        checkReveal();
+        if (window.scrollY > 300) toTopBtn.classList.add('show');
+        else toTopBtn.classList.remove('show');
+    });
+
+    if (toTopBtn) {
+        toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    window.addEventListener('keydown', e => {
+        if (e.key === "Escape") closeAllLayers();
+    });
+
+    checkReveal();
+});
+</script>
+
 </body>
 </html>
