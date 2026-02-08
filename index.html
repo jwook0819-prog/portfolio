@@ -241,70 +241,105 @@
         
         <div class="modal-summary-grid">
             <div class="summary-item"><strong>역할</strong> 임상 로직 설계, 알고리즘 검증, UI/UX 기획</div>
-            <div class="summary-item"><strong>핵심기술</strong> Computer Vision, 운동처방 알고리즘</div>
+            <div class="summary-item"><strong>핵심기술</strong> Muscularskeletal 측정 로직, 맞춤형 운동처방 로직</div>
         </div>
 
         <div class="modal-section">
-            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 시스템</h3>
+            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 기능 개발</h3>
             
-            <div class="modal-grid">
-                <div class="grid-text">
-                    <div class="step-list">
-                        <div class="step-item">
-                            <span class="step-num">1</span>
-                            <div class="step-content">
-                                <strong>자세 검사 (Posture Analysis)</strong>
-                                <p>Frontal/Sagittal/Transverse 3면의 신체 정렬 분석 로직 및 결과지 UI 기획</p>
+            <div class="modal-sub-section">
+                <h4 class="sub-title-badge">1. 자세검사 (Posture Analysis)</h4>
+                <div class="modal-grid">
+                    <div class="grid-text">
+                        <div class="step-list">
+                            <div class="step-item">
+                                <span class="step-num">P</span>
+                                <div class="step-content">
+                                    <strong>3면 정렬 및 균형 분석</strong>
+                                    <p>Frontal Plane, Sagittal Plane, Transverse Plane의 신체 정렬 분석.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="step-item">
-                            <span class="step-num">2</span>
-                            <div class="step-content">
-                                <strong>관절 가동범위 (ROM)</strong>
-                                <p>Neck, Shoulder, Hip, Knee 등 6대 관절 20개 동작의 정상/비정상 판단 기준 수립</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <span class="step-num">3</span>
-                            <div class="step-content">
-                                <strong>기능성 움직임 (Movement)</strong>
-                                <p>Overhead Squat 등 다관절 움직임 시 보상작용(Compensation) 탐지 알고리즘 설계</p>
+                            <div class="step-item">
+                                <span class="step-num">A</span>
+                                <div class="step-content">
+                                    <strong>알고리즘 설계</strong>
+                                    <p>손상 근육 매칭 및 운동처방 알고리즘 설계. 관리자 페이지 및 검사 결과지 UI 기획.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="grid-images">
+                        <div class="img-wrapper"><img src="./images/posture1-1.png" alt="자세검사1" class="zoomable"></div>
+                        <div class="img-wrapper"><img src="./images/posture1-2.png" alt="자세검사2" class="zoomable"></div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="grid-images">
-                    <div class="img-wrapper"><img src="./images/posture1-1.png" alt="자세검사 분석화면" class="zoomable"></div>
-                    <div class="img-wrapper"><img src="./images/joint-1.png" alt="ROM 측정화면" class="zoomable"></div>
-                    <div class="img-wrapper"><img src="./images/movement-1.png" alt="움직임 분석화면" class="zoomable"></div>
+            <div class="modal-sub-section" style="margin-top:25px;">
+                <h4 class="sub-title-badge">2. 관절기능검사 (ROM)</h4>
+                <div class="modal-grid">
+                    <div class="grid-text">
+                        <div class="step-list">
+                            <div class="step-item">
+                                <span class="step-num">R</span>
+                                <div class="step-content">
+                                    <strong>6대 관절 20개 측정 로직</strong>
+                                    <p>Cervical, Shoulder, Trunk, Hip, Knee, Ankle 관절 가동범위 측정.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <span class="step-num">A</span>
+                                <div class="step-content">
+                                    <strong>자동화 처방</strong>
+                                    <p>손상 근육 매칭 및 운동처방 알고리즘 설계. 관리자 페이지 및 검사 결과지 UI 기획.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-images">
+                        <div class="img-wrapper"><img src="./images/joint-1.png" alt="관절기능1" class="zoomable"></div>
+                        <div class="img-wrapper"><img src="./images/joint-2.png" alt="관절기능2" class="zoomable"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-sub-section" style="margin-top:25px;">
+                <h4 class="sub-title-badge">3. Movement Screening</h4>
+                <div class="modal-grid">
+                    <div class="grid-text">
+                        <div class="step-list">
+                            <div class="step-item">
+                                <span class="step-num">M</span>
+                                <div class="step-content">
+                                    <strong>보상 작용 탐지</strong>
+                                    <p>다관절 움직임 분석을 통한 보상 작용(Compensation) 탐지 로직 설계 및 손상 근육 매칭.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-images">
+                        <div class="img-wrapper"><img src="./images/movement-1.png" alt="움직임분석" class="zoomable"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal-section border-top" style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #f1f5f9;">
-            <h3 class="part-title"><span class="part-label">DTx</span> 맞춤형 운동처방 알고리즘</h3>
+        <div class="modal-section border-top">
+            <h3 class="part-title"><span class="part-label">DTx</span> AI 근골격계 디지털 치료제 개발</h3>
             <div class="modal-grid">
                 <div class="grid-text">
-                     <div class="step-list">
+                    <div class="step-list">
                         <div class="step-item">
-                            <span class="step-num">1</span>
+                            <span class="step-num">D</span>
                             <div class="step-content">
-                                <strong>개인화 알고리즘 (Algorithm)</strong>
-                                <p>검진 결과(Data)와 질환별 금기 동작을 매칭하여 '오늘의 운동' 자동 생성 로직 구현</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <span class="step-num">2</span>
-                            <div class="step-content">
-                                <strong>임상 피드백 (Clinical Loop)</strong>
-                                <p>사용자의 통증 수준(VAS) 및 수행도에 따라 난이도가 자동 조절되는 프로토콜 설계</p>
+                                <strong>개인 맞춤 운동처방</strong>
+                                <p>개인 맞춤 운동처방 알고리즘 기획 및 앱 UI/UX 기획.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="grid-images">
-                    <div class="img-wrapper"><img src="./images/project1-thumb.png" alt="DTx 앱 구동화면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/project1-thumb.png" alt="DTx 앱 화면" class="zoomable"></div>
                 </div>
             </div>
         </div>
@@ -316,41 +351,53 @@
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
-      <h2 class="modal-main-title">학생 체형 불균형 분석 및 예방사업</h2>
+      <h2 class="modal-main-title">학생 체형 불균형 분석 대시보드 및 예방사업</h2>
       
       <div class="modal-summary-grid" style="align-items: center;">
-        <div class="summary-item"><strong>대상</strong> 경기도교육청 40개교 (7,281명)</div>
-        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선</div>
+        <div class="summary-item"><strong>사업처</strong> 경기도교육청 (40개교)</div>
+        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선, 7,281명 데이터 분석</div>
         <div class="summary-actions" style="margin-left: auto; display: flex; gap: 10px;">
-           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드</a>
-           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 Code</a>
+           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드 보기</a>
+           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 GitHub 코드</a>
         </div>
       </div>
 
+      <div class="modal-section" style="margin-top: 20px;">
+         <h3 class="part-title"><span class="part-label">Tech Stack</span> 데이터 분석 및 시각화 기술</h3>
+         <div class="skill-tags" style="justify-content: flex-start;">
+            <span class="skill-tag">Python 3.9</span>
+            <span class="skill-tag">Streamlit</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Plotly</span>
+            <span class="skill-tag">GitHub Actions</span>
+         </div>
+      </div>
+
       <div class="modal-section">
-        <h3 class="part-title">데이터 분석 프로세스 및 성과</h3>
+        <h3 class="part-title">주요 분석 기능 및 성과</h3>
         <div class="modal-grid">
           <div class="grid-text">
+            <p style="margin-bottom:15px;">8,000여 명의 학생 데이터를 분석하여 성장기 체형 불균형을 추적하고 시각화하는 웹 대시보드를 구축했습니다.</p>
             <div class="step-list">
                 <div class="step-item">
                     <span class="step-num">1</span>
                     <div class="step-content">
-                        <strong>전신 균형 시각화 (Visualization)</strong>
-                        <p>Streamlit을 활용해 6대 관절 밸런스를 레이더 차트(Radar Chart)로 구현, 학교/학년별 필터링 기능 제공</p>
+                        <strong>전신 균형 시각화</strong>
+                        <p>6대 관절(Cervical, Shoulder, Trunk, Hip, Knee, Ankle)의 밸런스를 <strong>레이더 차트</strong>로 시각화.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <span class="step-num">2</span>
                     <div class="step-content">
-                        <strong>상관관계 분석 (Correlation)</strong>
-                        <p>거북목이 골반 불균형에 미치는 영향을 히트맵(Heatmap)으로 분석하여 예방 운동의 근거 마련</p>
+                        <strong>상관관계 분석</strong>
+                        <p>신체 부위 간 불균형 전이 현상을 <strong>히트맵(Heatmap)</strong>으로 통계적 분석.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <span class="step-num">3</span>
                     <div class="step-content">
-                        <strong>개선 효과 입증 (Validation)</strong>
-                        <p>1학기(Pre) vs 2학기(Post) 비교 분석 결과, 주요 관절 불균형 14% 감소 확인</p>
+                        <strong>성과 추적 및 보안</strong>
+                        <p>1학기 vs 2학기 데이터 비교를 통해 <strong>어깨 균형 14% 개선</strong> 입증. 개인정보 비식별화 처리.</p>
                     </div>
                 </div>
             </div>
@@ -362,17 +409,17 @@
                </div>
                <div class="stat-card-mini highlight-card" style="flex:1;">
                   <span class="stat-num">14<span>%↑</span></span>
-                  <span class="stat-txt">균형 개선율</span>
+                  <span class="stat-txt">체형 불균형 개선율</span>
                </div>
             </div>
           </div>
           
           <div class="grid-images">
              <div class="img-wrapper" style="background:#0f172a; display:flex; align-items:center; justify-content:center; color:white;">
-                <p style="font-weight:bold;">Dashboard Screen 1</p>
+                <p style="font-weight:bold;">Dashboard Screen</p>
              </div>
              <div class="img-wrapper" style="background:#334155; display:flex; align-items:center; justify-content:center; color:white;">
-                 <p style="font-weight:bold;">Analysis Chart</p>
+                 <p style="font-weight:bold;">Radar Chart</p>
              </div>
           </div>
         </div>
@@ -433,31 +480,47 @@
         <h3 class="part-title">시스템 아키텍처 및 구현 기능</h3>
         <div class="modal-grid">
           <div class="grid-text">
-            <p>수기 또는 엑셀로 관리되던 헬스케어 데이터를 <strong>자동화된 파이프라인</strong>을 통해 데이터베이스에 적재하고 시각화하는 전체 과정을 설계했습니다.</p>
-            <ul class="detail-list" style="margin-top:15px;">
-              <li><strong>Containerization:</strong> Docker Compose를 사용하여 Airflow, DB, Web Server 등 5개 컨테이너 환경 통합 구축</li>
-              <li><strong>ETL Automation:</strong> Airflow DAG를 활용해 데이터 추출(Extract), 결측치/이상치 정제(Transform), DB 적재(Load) 과정 자동화</li>
-              <li><strong>Data Quality:</strong> 300건 데이터 중 유효하지 않은 값(NULL, 범위 오류)을 필터링하는 전처리 로직 구현</li>
-              <li><strong>Visualization:</strong> 적재된 데이터를 Apache Superset과 연동하여 연령별 위험도, 검사 현황 등을 실시간 대시보드로 제공</li>
-            </ul>
-          </div>
-          
-      <div class="grid-stats-container">
-        <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
-            <div class="stat-card-mini highlight-card" style="width:100%;">
-                <span class="stat-num">Automation</span>
-                <span class="stat-txt">Airflow 기반 스케줄링</span>
-             </div>
-              <div class="stat-card-mini highlight-card" style="width:100%;">
-                 <span class="stat-num">300+</span>
-                <span class="stat-txt">대용량 데이터 처리</span>
+            <p style="margin-bottom:15px;">수기 또는 엑셀로 관리되던 헬스케어 데이터를 <strong>자동화된 파이프라인</strong>을 통해 데이터베이스에 적재하고 시각화하는 전체 과정을 설계했습니다.</p>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <div class="step-content">
+                        <strong>Containerization</strong>
+                        <p>Docker Compose를 사용하여 Airflow, DB, Web Server 등 5개 컨테이너 환경 통합 구축.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <div class="step-content">
+                        <strong>ETL Automation</strong>
+                        <p>Airflow DAG를 활용해 데이터 추출(Extract), 결측치/이상치 정제(Transform), DB 적재(Load) 과정 자동화.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <div class="step-content">
+                        <strong>Data Quality & Viz</strong>
+                        <p>유효하지 않은 값 필터링 로직 구현 및 Apache Superset 연동 실시간 대시보드 제공.</p>
+                    </div>
+                </div>
+            </div>
+            
+          <div class="grid-stats-container" style="margin-top:20px;">
+            <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
+                <div class="stat-card-mini highlight-card" style="width:100%;">
+                    <span class="stat-num">Automation</span>
+                    <span class="stat-txt">Airflow 기반 스케줄링</span>
+                 </div>
+                  <div class="stat-card-mini highlight-card" style="width:100%;">
+                     <span class="stat-num">300+</span>
+                    <span class="stat-txt">대용량 데이터 처리</span>
+                   </div>
                </div>
-           </div>
-          </div>
-        </div>
-     </div>
-
-     </div>
+              </div>
+            </div>
+         </div>
+      </div>
    </div>
  </div>  
 
@@ -475,11 +538,29 @@
             <h3 class="part-title">수행 및 협업 내용</h3>
             <div class="modal-grid">
                 <div class="grid-text">
-                    <ul class="detail-list">
-                        <li><strong>실험 설계:</strong> 맨발걷기 전후 뇌파(EEG) 변화를 측정하는 실험 프로토콜 설계</li>
-                        <li><strong>제작 협업:</strong> PD, 작가와 소통하며 전문적인 연구 내용을 방송 언어로 시각화</li>
-                        <li><strong>데이터 분석:</strong> 실험 참여자들의 뇌파 지표 분석을 통한 건강 증진 효과 입증</li>
-                    </ul>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-num">1</span>
+                            <div class="step-content">
+                                <strong>실험 설계</strong>
+                                <p>맨발걷기 전후 뇌파(EEG) 변화를 측정하는 실험 프로토콜 설계.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">2</span>
+                            <div class="step-content">
+                                <strong>제작 협업</strong>
+                                <p>PD, 작가와 소통하며 전문적인 연구 내용을 방송 언어로 시각화.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">3</span>
+                            <div class="step-content">
+                                <strong>데이터 분석</strong>
+                                <p>실험 참여자들의 뇌파 지표 분석을 통한 건강 증진 효과 입증.</p>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="modal-links" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
                         <a href="https://programs.sbs.co.kr/culture/sbsspecial/vod/53591/22000552190" target="_blank" class="tag" style="background:#2563eb; color:white; border:none; padding:10px 15px; text-decoration:none;">📺 SBS 다시보기</a>
@@ -686,14 +767,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // 이미지 확대 (줌)
-        if (e.target.classList.contains('zoomable')) {
+        // [수정] 이미지 확대 (줌) - 래퍼 클릭 시에도 동작
+        const zoomableImg = e.target.closest('.zoomable') || e.target.closest('.img-wrapper')?.querySelector('img');
+        
+        if (zoomableImg && lightbox && lightboxImg) {
             e.stopPropagation();
-            if (lightbox && lightboxImg) {
-                lightboxImg.src = e.target.src;
-                lightbox.classList.add('show');
-                document.body.style.overflow = "hidden";
-            }
+            lightboxImg.src = zoomableImg.src;
+            lightbox.classList.add('show');
             return;
         }
 
