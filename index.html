@@ -777,64 +777,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const toTopBtn = document.getElementById('toTopBtn');
     const revealElements = document.querySelectorAll('.reveal');
 
-    // 모든 레이어(모달, 라이트박스) 닫기 함수
+    // 1. [핵심] 모든 'img-wrapper'에 직접 클릭 이벤트를 강제로 붙입니다.
+    // (이 방식은 문서 전체 클릭을 감시하는 것보다 훨씬 확실합니다.)
+    const wrappers = document.querySelectorAll('.img-wrapper');
+    wrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function(e) {
+            e.stopPropagation(); // 부모(모달 등)로 클릭 전파 중단
+            const img = this.querySelector('img');
+            if (img && lightbox && lightboxImg) {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('show');
+                // 라이트박스가 떴을 때 배경 스크롤 막기
+                // (모달 위에서 떴다면 이미 hidden 상태일 것임)
+            }
+        });
+        // 마우스 올렸을 때 클릭 가능하다는 표시 강제 적용
+        wrapper.style.cursor = 'pointer'; 
+    });
+
+    // 라이트박스 닫기 (검은 배경 클릭 시)
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('show');
+            }
+        });
+    }
+
+    // 모달 닫기 기능
     function closeAllLayers() {
         if (lightbox) lightbox.classList.remove('show');
         document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
         document.body.style.overflow = "auto";
     }
 
-    // 클릭 이벤트 통합 관리
+    // 문서 전체 클릭 이벤트 (모달 열기/닫기 처리)
     document.addEventListener('click', function(e) {
-        
-        // ---------------------------------------------------------
-        // 1. [수정됨] 이미지 확대 기능 (가장 우선 순위 높게 처리)
-        // ---------------------------------------------------------
-        // 클릭한 요소가 .zoomable 이미지이거나, .img-wrapper 내부의 요소인 경우
-        const clickedImage = e.target.closest('.zoomable'); 
-        const clickedWrapper = e.target.closest('.img-wrapper');
-        
-        // 실제 확대할 이미지 요소 찾기
-        let targetImg = null;
-        if (clickedImage) {
-            targetImg = clickedImage;
-        } else if (clickedWrapper) {
-            targetImg = clickedWrapper.querySelector('img');
-        }
-
-        if (targetImg && lightbox && lightboxImg) {
-            // 이벤트 전파 중단 (모달이 닫히거나 다른 동작 방지)
-            e.stopPropagation(); 
-            
-            // 라이트박스 이미지 소스 설정 및 열기
-            lightboxImg.src = targetImg.src;
-            lightbox.classList.add('show');
-            return; // 여기서 함수 종료
-        }
-
-        // ---------------------------------------------------------
-        // 2. 라이트박스 닫기 (검은 배경 클릭 시)
-        // ---------------------------------------------------------
-        if (e.target.closest('#lightbox')) {
-            lightbox.classList.remove('show');
-            // 모달이 켜져있는 상태라면 스크롤 잠금 유지 (모달 뒤 스크롤 방지)
-            if (!document.querySelector('.modal.show')) {
-                document.body.style.overflow = "auto";
-            }
-            return;
-        }
-
-        // ---------------------------------------------------------
-        // 3. 모달 닫기 (X 버튼이나 모달 배경 클릭 시)
-        // ---------------------------------------------------------
-        if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
-            closeAllLayers();
-            return;
-        }
-
-        // ---------------------------------------------------------
-        // 4. 프로젝트 모달 열기 (카드 클릭 시)
-        // ---------------------------------------------------------
+        // 모달 열기 (프로젝트 카드 클릭)
         const card = e.target.closest('.project-card');
         if (card) {
             const modalId = card.getAttribute('data-modal');
@@ -844,9 +823,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = "hidden";
             }
         }
+
+        // 모달 닫기 (배경/X버튼)
+        if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
+            closeAllLayers();
+        }
     });
 
-    // 스크롤 애니메이션
+    // 스크롤 애니메이션 및 Top 버튼
     function checkReveal() {
         const triggerBottom = window.innerHeight / 5 * 4;
         revealElements.forEach(el => {
@@ -857,15 +841,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', () => {
         checkReveal();
-        if (window.scrollY > 300) toTopBtn.classList.add('show');
-        else toTopBtn.classList.remove('show');
+        if (toTopBtn) {
+            if (window.scrollY > 300) toTopBtn.classList.add('show');
+            else toTopBtn.classList.remove('show');
+        }
     });
 
     if (toTopBtn) {
         toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    // ESC 키로 닫기
     window.addEventListener('keydown', e => {
         if (e.key === "Escape") closeAllLayers();
     });
