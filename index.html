@@ -283,6 +283,9 @@
       background: rgba(15, 23, 42, 0.8); 
       z-index: 9999; display: none; opacity: 0; transition: opacity 0.3s;
       overflow-y: auto; padding: 20px 0; backdrop-filter: blur(5px);
+      /* [중요] 모달이 포커스를 받을 수 있도록 설정 */
+      outline: none;
+      -webkit-overflow-scrolling: touch; /* 모바일 스크롤 부드럽게 */
     }
     .modal.show { display: block; opacity: 1; }
 
@@ -630,7 +633,7 @@
   </div>
 </section>
 
-<div id="dxDtxModal" class="modal">
+<div id="dxDtxModal" class="modal" tabindex="-1">
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
@@ -772,7 +775,7 @@
   </div>
 </div>
 
-<div id="publicProjectModal" class="modal">
+<div id="publicProjectModal" class="modal" tabindex="-1">
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
@@ -854,7 +857,7 @@
   </div>
 </div>
 
-<div id="cesProjectModal" class="modal">
+<div id="cesProjectModal" class="modal" tabindex="-1">
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
@@ -877,7 +880,7 @@
   </div>
 </div>
 
-<div id="mskPipelineModal" class="modal">
+<div id="mskPipelineModal" class="modal" tabindex="-1">
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
@@ -950,7 +953,7 @@
    </div>
  </div>  
 
-<div id="sbsProjectModal" class="modal">
+<div id="sbsProjectModal" class="modal" tabindex="-1">
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
@@ -1175,17 +1178,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const toTopBtn = document.getElementById('toTopBtn');
     const revealElements = document.querySelectorAll('.reveal');
 
-    // ★★★ [핵심 해결] 스크롤 자동 관리자 ★★★
-    // 어떤 창이 열리든, 닫히든 이 함수가 현재 상태를 보고 스크롤을 켜거나 끕니다.
-    // 더 이상 꼬일 일이 없습니다.
+    // [핵심] 스크롤 자동 관리 및 초점 복구 함수
     function updateBodyScroll() {
-        const isModalOpen = document.querySelector('.modal.show');
+        const activeModal = document.querySelector('.modal.show');
         const isLightboxOpen = lightbox && lightbox.classList.contains('show');
 
-        if (isModalOpen || isLightboxOpen) {
-            document.body.style.overflow = "hidden"; // 하나라도 열려있으면 잠금
+        // 1. 스크롤 잠금/해제
+        if (activeModal || isLightboxOpen) {
+            document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = ""; // 모두 닫혀있으면 풀기
+            document.body.style.overflow = "";
+        }
+
+        // 2. [중요] 초점 관리 (제어권 복구)
+        // 라이트박스는 닫혔지만 모달은 열려있다면, 초점을 모달로 강제 이동시킵니다.
+        if (!isLightboxOpen && activeModal) {
+            activeModal.focus();
         }
     }
 
@@ -1203,7 +1211,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             if (lightbox) {
                 lightbox.classList.remove('show');
-                updateBodyScroll(); // 상태 업데이트
+                updateBodyScroll(); // 여기서 모달로 초점을 돌려줍니다.
             }
             return;
         }
@@ -1216,7 +1224,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (img && lightbox && lightboxImg) {
                 lightboxImg.src = img.src;
                 lightbox.classList.add('show');
-                updateBodyScroll(); // 상태 업데이트
+                updateBodyScroll(); 
             }
             return;
         }
@@ -1225,7 +1233,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (target.classList.contains('modal') || target.classList.contains('modal-close')) {
             e.stopPropagation(); 
             document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
-            updateBodyScroll(); // 상태 업데이트
+            updateBodyScroll(); 
             return;
         }
 
@@ -1239,13 +1247,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetModal = document.getElementById(modalId);
             if (targetModal) {
                 targetModal.classList.add('show');
-                updateBodyScroll(); // 상태 업데이트
+                // 모달을 열 때도 초점을 줘서 스크롤 준비를 합니다.
+                targetModal.focus();
+                updateBodyScroll(); 
             }
             return;
         }
     });
 
-    // 3. ESC 키 제어 (여기도 상태 업데이트 적용)
+    // 3. ESC 키 제어
     window.addEventListener('keydown', e => {
         if (e.key === "Escape") {
             if (lightbox && lightbox.classList.contains('show')) {
@@ -1253,7 +1263,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
             }
-            updateBodyScroll(); // 상태 업데이트
+            updateBodyScroll(); 
         }
     });
 
