@@ -770,122 +770,145 @@
     <img class="lightbox-img" id="lightbox-target">
 </div>
 
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     // -------------------------------------------------------------
-    // 1. [핵심] 이미지 클릭 확대 (이벤트 위임 - 가장 강력한 방법)
+    // 1. 변수 및 요소 선택
     // -------------------------------------------------------------
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-target');
+    const toTopBtn = document.getElementById('toTopBtn');
+    const revealElements = document.querySelectorAll('.reveal');
 
-    // 문서 전체(document)에 클릭 이벤트를 걸어서, 어디서든 클릭이 발생하면 감시합니다.
+    // -------------------------------------------------------------
+    // 2. 통합 클릭 이벤트 리스너 (이벤트 위임 & 버블링 방지)
+    // -------------------------------------------------------------
     document.addEventListener('click', function(e) {
-        
-        // 클릭된 요소가 .img-wrapper 자신이거나, 그 안에 있는 요소(img)인지 확인
-        const wrapper = e.target.closest('.img-wrapper');
+        const target = e.target;
 
-        if (wrapper) {
-            // 이미지 래퍼를 클릭했다면?
-            const img = wrapper.querySelector('img');
+        // [A] 라이트박스 닫기 (검은 배경 또는 X버튼)
+        // 핵심: 닫기 버튼을 누를 때 이벤트가 뒤로 새어나가지 않게 막음
+        if (target.id === 'lightbox' || target.classList.contains('lightbox-close')) {
+            e.stopPropagation(); // 이 줄이 "뒤쪽 클릭"을 막아줍니다.
+            e.preventDefault();
             
+            if (lightbox) lightbox.classList.remove('show');
+            
+            // 모달이 뒤에 열려있지 않을 때만 스크롤 풀기
+            if (!document.querySelector('.modal.show')) {
+                document.body.style.overflow = "auto";
+            }
+            return;
+        }
+
+        // [B] 이미지 확대 (img-wrapper 클릭)
+        const wrapper = target.closest('.img-wrapper');
+        if (wrapper) {
+            e.stopPropagation(); // 부모(모달)로 클릭 전파 중단
+            e.preventDefault();
+
+            const img = wrapper.querySelector('img');
             if (img && lightbox && lightboxImg) {
-                // 부모(모달 배경 등)로 클릭 신호가 퍼지는 것을 막습니다.
-                e.stopPropagation(); 
-                
-                // 라이트박스에 이미지 주소 넣고 보여주기
                 lightboxImg.src = img.src;
                 lightbox.classList.add('show');
-                
-                // 라이트박스가 떴을 때 스크롤 막기
-                document.body.style.overflow = "hidden";
+                // 라이트박스 켜질 때 스크롤 잠금
+                // (모달 위라면 이미 잠겨있겠지만 확실하게 다시 잠금)
+                document.body.style.overflow = "hidden"; 
             }
+            return;
         }
-    });
 
-    // -------------------------------------------------------------
-    // 2. 라이트박스 닫기
-    // -------------------------------------------------------------
-    if (lightbox) {
-        lightbox.addEventListener('click', function(e) {
-            // 검은 배경이나 X버튼을 눌렀을 때만 닫힘
-            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
-                lightbox.classList.remove('show');
-                
-                // 만약 뒤에 모달이 열려있는 상태라면 스크롤을 풀지 않음
-                const anyModalOpen = document.querySelector('.modal.show');
-                if (!anyModalOpen) {
-                    document.body.style.overflow = "auto";
-                }
+        // [C] 모달 닫기 (X버튼 또는 모달 배경)
+        if (target.classList.contains('modal') || target.classList.contains('modal-close')) {
+            e.stopPropagation(); 
+            // 현재 열려있는 모든 모달 닫기
+            document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
+            
+            // 라이트박스가 꺼져있다면 스크롤 풀기
+            if (!lightbox.classList.contains('show')) {
+                document.body.style.overflow = "auto";
             }
-        });
-    }
+            return;
+        }
 
-    // -------------------------------------------------------------
-    // 3. 모달 열기 (프로젝트 카드 클릭)
-    // -------------------------------------------------------------
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const modalId = this.getAttribute('data-modal');
+        // [D] 모달 열기 (프로젝트 카드 클릭)
+        const card = target.closest('.project-card');
+        if (card) {
+            // 라이트박스가 떠 있는 상태라면 모달 열기 금지 (안전장치)
+            if (lightbox.classList.contains('show')) return;
+
+            const modalId = card.getAttribute('data-modal');
             const targetModal = document.getElementById(modalId);
             if (targetModal) {
                 targetModal.classList.add('show');
                 document.body.style.overflow = "hidden";
             }
-        });
+            return;
+        }
     });
 
     // -------------------------------------------------------------
-    // 4. 모달 닫기 (X버튼 및 배경 클릭)
+    // 3. 스크롤 애니메이션 (Reveal)
     // -------------------------------------------------------------
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal || e.target.classList.contains('modal-close')) {
-                modal.classList.remove('show');
-                // 라이트박스가 꺼져있을 때만 스크롤 풀기
-                if (!lightbox.classList.contains('show')) {
-                    document.body.style.overflow = "auto";
-                }
-            }
-        });
-    });
-
-    // -------------------------------------------------------------
-    // 5. 스크롤 애니메이션 & Top 버튼
-    // -------------------------------------------------------------
-    const revealElements = document.querySelectorAll('.reveal');
-    const toTopBtn = document.getElementById('toTopBtn');
-
     function checkReveal() {
+        // 화면 높이의 80% 지점에 오면 나타나게 함
         const triggerBottom = window.innerHeight * 0.8;
+        
         revealElements.forEach(el => {
             const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < triggerBottom) el.classList.add('active');
+            if (elementTop < triggerBottom) {
+                el.classList.add('active');
+            }
         });
     }
 
+    // -------------------------------------------------------------
+    // 4. 스크롤 이벤트 (Top 버튼 & 애니메이션)
+    // -------------------------------------------------------------
     window.addEventListener('scroll', () => {
         checkReveal();
+        
+        // Top 버튼 표시 여부
         if (toTopBtn) {
-            if (window.scrollY > 300) toTopBtn.classList.add('show');
-            else toTopBtn.classList.remove('show');
+            if (window.scrollY > 300) {
+                toTopBtn.classList.add('show');
+            } else {
+                toTopBtn.classList.remove('show');
+            }
         }
     });
 
+    // -------------------------------------------------------------
+    // 5. Top 버튼 클릭 시 이동
+    // -------------------------------------------------------------
     if (toTopBtn) {
-        toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        toTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 
-    // ESC 키로 닫기
+    // -------------------------------------------------------------
+    // 6. ESC 키로 닫기 (접근성)
+    // -------------------------------------------------------------
     window.addEventListener('keydown', e => {
         if (e.key === "Escape") {
-            document.querySelectorAll('.modal, .lightbox').forEach(el => el.classList.remove('show'));
-            document.body.style.overflow = "auto";
+            // 라이트박스가 켜져있으면 라이트박스만 끔
+            if (lightbox.classList.contains('show')) {
+                lightbox.classList.remove('show');
+            } 
+            // 아니면 모달을 끔
+            else {
+                document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
+                document.body.style.overflow = "auto";
+            }
         }
     });
 
+    // 초기 실행 (새로고침 시 스크롤 위치에 있는 요소 보여주기 위해)
     checkReveal();
 });
+</script>
 
 </body>
 </html>
