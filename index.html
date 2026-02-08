@@ -1170,108 +1170,107 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // -------------------------------------------------------------
-    // 1. 변수 및 요소 선택
-    // -------------------------------------------------------------
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-target');
     const toTopBtn = document.getElementById('toTopBtn');
     const revealElements = document.querySelectorAll('.reveal');
 
-    // -------------------------------------------------------------
-    // 2. 텍스트만 있는 상자에서 돋보기 커서 제거 (디테일 수정)
-    // -------------------------------------------------------------
-    document.querySelectorAll('.img-wrapper').forEach(wrapper => {
-        if (!wrapper.querySelector('img')) {
-            wrapper.style.cursor = 'default';
+    // ★★★ [핵심 해결] 스크롤 자동 관리자 ★★★
+    // 어떤 창이 열리든, 닫히든 이 함수가 현재 상태를 보고 스크롤을 켜거나 끕니다.
+    // 더 이상 꼬일 일이 없습니다.
+    function updateBodyScroll() {
+        const isModalOpen = document.querySelector('.modal.show');
+        const isLightboxOpen = lightbox && lightbox.classList.contains('show');
+
+        if (isModalOpen || isLightboxOpen) {
+            document.body.style.overflow = "hidden"; // 하나라도 열려있으면 잠금
+        } else {
+            document.body.style.overflow = ""; // 모두 닫혀있으면 풀기
         }
+    }
+
+    // 1. 텍스트 상자 커서 정리
+    document.querySelectorAll('.img-wrapper').forEach(wrapper => {
+        if (!wrapper.querySelector('img')) wrapper.style.cursor = 'default';
     });
 
-    // -------------------------------------------------------------
-    // 3. 통합 클릭 이벤트 리스너 (이벤트 위임 & 버블링 방지)
-    // -------------------------------------------------------------
+    // 2. 통합 클릭 리스너
     document.addEventListener('click', function(e) {
         const target = e.target;
 
-        // [A] 라이트박스 닫기 (검은 배경 또는 X버튼)
+        // --- Lightbox 닫기 ---
         if (target.id === 'lightbox' || target.classList.contains('lightbox-close')) {
             e.stopPropagation();
-            e.preventDefault();
-            
-            if (lightbox) lightbox.classList.remove('show');
-            
-            // 모달이 뒤에 열려있지 않을 때만 스크롤 풀기
-            if (!document.querySelector('.modal.show')) {
-                document.body.style.overflow = "auto";
+            if (lightbox) {
+                lightbox.classList.remove('show');
+                updateBodyScroll(); // 상태 업데이트
             }
             return;
         }
 
-        // [B] 이미지 확대 (img-wrapper 클릭)
+        // --- 이미지 클릭 (Lightbox 열기) ---
         const wrapper = target.closest('.img-wrapper');
         if (wrapper) {
             e.stopPropagation(); 
-            e.preventDefault();
-
             const img = wrapper.querySelector('img');
             if (img && lightbox && lightboxImg) {
                 lightboxImg.src = img.src;
                 lightbox.classList.add('show');
-                document.body.style.overflow = "hidden"; 
+                updateBodyScroll(); // 상태 업데이트
             }
             return;
         }
 
-        // [C] 모달 닫기 (X버튼 또는 모달 배경)
+        // --- 모달 닫기 ---
         if (target.classList.contains('modal') || target.classList.contains('modal-close')) {
             e.stopPropagation(); 
             document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
-            
-            if (!lightbox.classList.contains('show')) {
-                document.body.style.overflow = "auto";
-            }
+            updateBodyScroll(); // 상태 업데이트
             return;
         }
 
-        // [D] 모달 열기 (프로젝트 카드 클릭)
+        // --- 모달 열기 ---
         const card = target.closest('.project-card');
         if (card) {
-            if (lightbox.classList.contains('show')) return;
+            // 라이트박스가 켜져있으면 모달 열기 금지
+            if (lightbox && lightbox.classList.contains('show')) return;
 
             const modalId = card.getAttribute('data-modal');
             const targetModal = document.getElementById(modalId);
             if (targetModal) {
                 targetModal.classList.add('show');
-                document.body.style.overflow = "hidden";
+                updateBodyScroll(); // 상태 업데이트
             }
             return;
         }
     });
 
-    // -------------------------------------------------------------
-    // 4. 스크롤 애니메이션 (Reveal)
-    // -------------------------------------------------------------
+    // 3. ESC 키 제어 (여기도 상태 업데이트 적용)
+    window.addEventListener('keydown', e => {
+        if (e.key === "Escape") {
+            if (lightbox && lightbox.classList.contains('show')) {
+                lightbox.classList.remove('show');
+            } else {
+                document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
+            }
+            updateBodyScroll(); // 상태 업데이트
+        }
+    });
+
+    // 4. 스크롤 애니메이션
     function checkReveal() {
         const triggerBottom = window.innerHeight * 0.8;
         revealElements.forEach(el => {
             const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < triggerBottom) {
-                el.classList.add('active');
-            }
+            if (elementTop < triggerBottom) el.classList.add('active');
         });
     }
 
-    // -------------------------------------------------------------
-    // 5. 스크롤 이벤트 (Top 버튼 & 애니메이션)
-    // -------------------------------------------------------------
     window.addEventListener('scroll', () => {
         checkReveal();
         if (toTopBtn) {
-            if (window.scrollY > 300) {
-                toTopBtn.classList.add('show');
-            } else {
-                toTopBtn.classList.remove('show');
-            }
+            if (window.scrollY > 300) toTopBtn.classList.add('show');
+            else toTopBtn.classList.remove('show');
         }
     });
 
@@ -1281,20 +1280,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
-    // -------------------------------------------------------------
-    // 6. ESC 키로 닫기
-    // -------------------------------------------------------------
-    window.addEventListener('keydown', e => {
-        if (e.key === "Escape") {
-            if (lightbox.classList.contains('show')) {
-                lightbox.classList.remove('show');
-            } else {
-                document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
-                document.body.style.overflow = "auto";
-            }
-        }
-    });
 
     checkReveal();
 });
