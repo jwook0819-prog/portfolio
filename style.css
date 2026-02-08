@@ -265,7 +265,7 @@ section { padding: 90px 20px; width: 100%; }
 .vol-year { margin-top: 20px; font-weight: 800; color: #cbd5e1; font-size: 1.5rem; text-align: right; }
 
 /* =========================================
-   8. 팝업 모달 & 기타 유틸리티 (수정됨)
+   8. 팝업 모달 & 기타 유틸리티 (디자인 최적화)
    ========================================= */
 .modal {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -294,14 +294,22 @@ section { padding: 90px 20px; width: 100%; }
 .summary-item { font-size: 1.05rem; color: #334155; }
 .summary-item strong { color: #2563eb; margin-right: 8px; }
 
+/* 모달 섹션 스타일 */
+.modal-section { margin-bottom: 20px; }
 .part-title { font-size: 1.4rem; margin: 40px 0 20px; display: flex; align-items: center; gap: 12px; color: #1e293b; }
 .part-label { background: #0f172a; color: #fff; font-size: 0.85rem; padding: 4px 10px; border-radius: 6px; }
+
+/* 소제목 배지 스타일 */
+.sub-title-badge {
+    font-size: 1.2rem; margin-bottom: 15px; color: #1e293b;
+    border-left: 4px solid #2563eb; padding-left: 10px;
+}
 
 .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 @media (max-width: 800px) { .modal-grid { grid-template-columns: 1fr; } }
 .grid-text { font-size: 1.05rem; color: #475569; line-height: 1.8; }
 
-/* [수정됨] 이미지 그리드 및 크기 제한 */
+/* 이미지 그리드 (크기 제한) */
 .grid-images {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -311,21 +319,22 @@ section { padding: 90px 20px; width: 100%; }
 
 .img-wrapper {
   width: 100%;
-  height: 220px; /* 높이 고정 */
+  height: 220px; /* 높이 고정으로 스크롤 방지 */
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
   position: relative;
+  cursor: zoom-in; /* 커서 변경 */
 }
 
 .img-wrapper img { 
   width: 100%; height: 100%; 
-  object-fit: cover; /* 영역 꽉 채우기 */
-  cursor: zoom-in; transition: 0.3s; 
+  object-fit: cover; 
+  transition: 0.3s; 
 }
 .img-wrapper img:hover { transform: scale(1.05); }
 
-/* [수정됨] 단계별 텍스트 리스트 디자인 */
+/* 단계별 리스트 디자인 */
 .step-list { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
 .step-item { display: flex; gap: 12px; align-items: flex-start; }
 
@@ -354,4 +363,36 @@ section { padding: 90px 20px; width: 100%; }
   position: fixed; bottom: 40px; right: 40px;
   width: 55px; height: 55px;
   background: #2563eb; color: #fff;
-  border: none; border-radius: 5
+  border: none; border-radius: 50%;
+  font-size: 1.5rem; cursor: pointer;
+  z-index: 9990; box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+  display: none; transition: 0.3s; opacity: 0;
+}
+#toTopBtn.show { display: block; opacity: 1; }
+#toTopBtn:hover { background: #1e40af; transform: translateY(-5px); }
+
+/* 라이트박스 */
+.lightbox {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95); z-index: 10000;
+  display: none; justify-content: center; align-items: center;
+}
+.lightbox.show { display: flex; }
+.lightbox-img { max-width: 90%; max-height: 90%; border-radius: 12px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+.lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: #fff; cursor: pointer; opacity: 0.8; }
+.lightbox-close:hover { opacity: 1; }
+
+/* 스크롤 애니메이션 */
+.reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .hero-profile { width: 130px; height: 130px; }
+  .name { font-size: 2.4rem; }
+  section { padding: 70px 20px; }
+  .section-title { font-size: 2rem; }
+  .timeline-content, .edu-card { padding: 25px; } 
+  .timeline { border-left: 2px solid #e2e8f0; padding-left: 25px; }
+  .timeline-dot { left: -35px; width: 14px; height: 14px; top: 25px; }
+}
