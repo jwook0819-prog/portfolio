@@ -88,7 +88,7 @@
         <div class="skill-tags">
           <span class="skill-tag">Notion</span>
           <span class="skill-tag">PowerPoint</span>
-          <span class="skill-tag">excel</span>          
+          <span class="skill-tag">Excel</span>          
           <span class="skill-tag">Figma (기초)</span>
           <span class="skill-tag">Git/Github</span>
         </div>
@@ -210,8 +210,8 @@
          <span class="tag">Docker</span>
          <span class="tag">PostgreSQL</span>
        </div>
-     </div>
-   </div>
+      </div>
+    </div>
 
       <div class="card project-card standard reveal" data-modal="sbsProjectModal">
         <div class="project-thumb">
@@ -238,56 +238,73 @@
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
         <h2 class="modal-main-title">AI 근골격계 Dx & DTx 통합 솔루션 개발</h2>
+        
         <div class="modal-summary-grid">
             <div class="summary-item"><strong>역할</strong> 임상 로직 설계, 알고리즘 검증, UI/UX 기획</div>
-            <div class="summary-item"><strong>핵심기술</strong> Muscularskeletal 측정 로직, 맞춤형 운동처방 로직</div>
+            <div class="summary-item"><strong>핵심기술</strong> Computer Vision, 운동처방 알고리즘</div>
         </div>
+
         <div class="modal-section">
-            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 기능 개발</h3>
-            <div class="modal-sub-section">
-                <h4>자세검사 (Posture Analysis)</h4>
-                <div class="modal-grid">
-                    <div class="grid-text"><p>Frontal Plane, Sagittal Planem, Trasverse Plane 3개 면의 정렬, 균형 분석.<br>
-                    손상 근육 매칭 및 운동처방 알고리즘 설계.<br>
-                    관리자 페이지, 검사 결과지 UI 기획</p></div>
-                    <div class="grid-images">
-                        <div class="img-wrapper"><img src="./images/posture1-1.png" alt="자세검사1" class="zoomable"></div>
-                        <div class="img-wrapper"><img src="./images/posture1-2.png" alt="자세검사2" class="zoomable"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-sub-section" style="margin-top:25px;">
-                <h4>관절기능검사 (ROM)</h4>
-                <div class="modal-grid">
-                    <div class="grid-text"><p>Cervical, Shoulder, Trunk, Hip, Knee, Ankle 6개 관절, 20개 측정 로직 개발.<br>
-                    손상 근육 매칭 및 운동처방 알고리즘 설계.<br>
-                    관리자 페이지, 검사 결과지 UI 기획</p></div>
-                    <div class="grid-images">
-                        <div class="img-wrapper"><img src="./images/joint-1.png" alt="관절기능1" class="zoomable"></div>
-                        <div class="img-wrapper"><img src="./images/joint-2.png" alt="관절기능2" class="zoomable"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-sub-section" style="margin-top:25px;">
-                <h4>Movement Screening</h4>
-                <div class="modal-grid">
-                    <div class="grid-text"><p>다관절 움직임 분석을 통한 보상 작용 탐지 로직을 설계.<br>
-                    손상 근육 매칭 및 운동처방 알고리즘 설계.</p></div>
-                    <div class="grid-images">
-                        <div class="img-wrapper" style="grid-column: span 2;"><img src="./images/movement-1.png" alt="움직임분석" class="zoomable"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-section border-top">
-            <h3 class="part-title"><span class="part-label">DTx</span> AI 근골격계 디지털 치료제 개발</h3>
+            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 시스템</h3>
+            
             <div class="modal-grid">
                 <div class="grid-text">
-                    <p>개인 맞춤 운동처방 알고리즘 기획<br>
-                      앱 UI/UX 기획.</p>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-num">1</span>
+                            <div class="step-content">
+                                <strong>자세 검사 (Posture Analysis)</strong>
+                                <p>Frontal/Sagittal/Transverse 3면의 신체 정렬 분석 로직 및 결과지 UI 기획</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">2</span>
+                            <div class="step-content">
+                                <strong>관절 가동범위 (ROM)</strong>
+                                <p>Neck, Shoulder, Hip, Knee 등 6대 관절 20개 동작의 정상/비정상 판단 기준 수립</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">3</span>
+                            <div class="step-content">
+                                <strong>기능성 움직임 (Movement)</strong>
+                                <p>Overhead Squat 등 다관절 움직임 시 보상작용(Compensation) 탐지 알고리즘 설계</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-images">
+                    <div class="img-wrapper"><img src="./images/posture1-1.png" alt="자세검사 분석화면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/joint-1.png" alt="ROM 측정화면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/movement-1.png" alt="움직임 분석화면" class="zoomable"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-section border-top" style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #f1f5f9;">
+            <h3 class="part-title"><span class="part-label">DTx</span> 맞춤형 운동처방 알고리즘</h3>
+            <div class="modal-grid">
+                <div class="grid-text">
+                     <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-num">1</span>
+                            <div class="step-content">
+                                <strong>개인화 알고리즘 (Algorithm)</strong>
+                                <p>검진 결과(Data)와 질환별 금기 동작을 매칭하여 '오늘의 운동' 자동 생성 로직 구현</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">2</span>
+                            <div class="step-content">
+                                <strong>임상 피드백 (Clinical Loop)</strong>
+                                <p>사용자의 통증 수준(VAS) 및 수행도에 따라 난이도가 자동 조절되는 프로토콜 설계</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="grid-images">
-                    <div class="img-wrapper" style="grid-column: span 2;"><img src="./images/project1-thumb.png" alt="DTx 앱 화면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/project1-thumb.png" alt="DTx 앱 구동화면" class="zoomable"></div>
                 </div>
             </div>
         </div>
@@ -299,56 +316,67 @@
   <div class="modal-content">
     <button class="modal-close">&times;</button>
     <div class="modal-inner">
-      <h2 class="modal-main-title">학생 체형 불균형 분석 대시보드 및 예방사업</h2>
+      <h2 class="modal-main-title">학생 체형 불균형 분석 및 예방사업</h2>
       
       <div class="modal-summary-grid" style="align-items: center;">
-        <div class="summary-item"><strong>사업처</strong> 경기도교육청 (40개교)</div>
-        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선, 7,281명 데이터 분석</div>
+        <div class="summary-item"><strong>대상</strong> 경기도교육청 40개교 (7,281명)</div>
+        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선</div>
         <div class="summary-actions" style="margin-left: auto; display: flex; gap: 10px;">
-           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드 보기</a>
-           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 GitHub 코드</a>
+           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드</a>
+           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 Code</a>
         </div>
-      </div>
-
-      <div class="modal-section" style="margin-top: 20px;">
-         <h3 class="part-title"><span class="part-label">Tech Stack</span> 데이터 분석 및 시각화 기술</h3>
-         <div class="skill-tags" style="justify-content: flex-start;">
-            <span class="skill-tag">Python 3.9</span>
-            <span class="skill-tag">Streamlit</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">Plotly</span>
-            <span class="skill-tag">GitHub Actions</span>
-         </div>
       </div>
 
       <div class="modal-section">
-        <h3 class="part-title">주요 분석 기능 및 성과</h3>
+        <h3 class="part-title">데이터 분석 프로세스 및 성과</h3>
         <div class="modal-grid">
           <div class="grid-text">
-            <p>8,000여 명의 학생 데이터를 분석하여 성장기 체형 불균형을 추적하고 시각화하는 웹 대시보드를 구축했습니다.</p>
-            <ul class="detail-list" style="margin-top:15px;">
-              <li><strong>전신 균형 시각화:</strong> 6대 관절(Cervical, Shoulder, Trunk, Hip, Knee, Ankle)의 밸런스를 <strong>레이더 차트</strong>로 시각화하여 직관적 파악 가능</li>
-              <li><strong>상관관계 분석:</strong> 신체 부위 간 불균형 전이 현상을 <strong>히트맵(Heatmap)</strong>으로 통계적 분석</li>
-              <li><strong>성과 추적:</strong> 1학기 vs 2학기 데이터 비교를 통해 운동 처방 후 <strong>어깨 균형 14% 개선</strong> 입증</li>
-              <li><strong>데이터 보안:</strong> 개인정보 비식별화 및 일반화(Generalization) 처리로 안전한 데이터 파이프라인 구축</li>
-            </ul>
-          </div>
-          
-          <div class="grid-stats-container">
-            <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
-               <div class="stat-card-mini highlight-card" style="width:100%;">
+            <div class="step-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <div class="step-content">
+                        <strong>전신 균형 시각화 (Visualization)</strong>
+                        <p>Streamlit을 활용해 6대 관절 밸런스를 레이더 차트(Radar Chart)로 구현, 학교/학년별 필터링 기능 제공</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <div class="step-content">
+                        <strong>상관관계 분석 (Correlation)</strong>
+                        <p>거북목이 골반 불균형에 미치는 영향을 히트맵(Heatmap)으로 분석하여 예방 운동의 근거 마련</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <div class="step-content">
+                        <strong>개선 효과 입증 (Validation)</strong>
+                        <p>1학기(Pre) vs 2학기(Post) 비교 분석 결과, 주요 관절 불균형 14% 감소 확인</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-stats-container" style="margin-top: 20px;">
+               <div class="stat-card-mini highlight-card" style="flex:1;">
                  <span class="stat-num">Data Viz</span>
-                 <span class="stat-txt">Streamlit 기반 대시보드(필터링, 실시간 업로드)</span>
+                 <span class="stat-txt">Streamlit 대시보드</span>
                </div>
-               <div class="stat-card-mini highlight-card" style="width:100%;">
+               <div class="stat-card-mini highlight-card" style="flex:1;">
                   <span class="stat-num">14<span>%↑</span></span>
-                  <span class="stat-txt">체형 불균형 개선율 달성</span>
+                  <span class="stat-txt">균형 개선율</span>
                </div>
             </div>
           </div>
+          
+          <div class="grid-images">
+             <div class="img-wrapper" style="background:#0f172a; display:flex; align-items:center; justify-content:center; color:white;">
+                <p style="font-weight:bold;">Dashboard Screen 1</p>
+             </div>
+             <div class="img-wrapper" style="background:#334155; display:flex; align-items:center; justify-content:center; color:white;">
+                 <p style="font-weight:bold;">Analysis Chart</p>
+             </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
