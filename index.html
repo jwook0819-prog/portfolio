@@ -772,45 +772,62 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 요소 선택
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-target');
     const toTopBtn = document.getElementById('toTopBtn');
     const revealElements = document.querySelectorAll('.reveal');
 
-    // [핵심] 클릭 이벤트 통합 관리 (이벤트 위임 방식)
-    // 문서 전체(body)에서 발생하는 클릭을 감지합니다.
-    document.body.addEventListener('click', function(e) {
-        
-        // 1. 이미지 확대 기능 (가장 최우선 처리)
-        // 클릭된 요소(e.target)가 .img-wrapper 자신이거나 그 안에 있는 경우
+    // [강력 수정] 클릭 이벤트 핸들러 함수
+    function handleImageClick(e) {
+        // 클릭된 요소가 이미지거나, 이미지를 감싼 래퍼인지 확인
         const wrapper = e.target.closest('.img-wrapper');
-        
-        if (wrapper) {
-            // 이미지 래퍼를 눌렀다면?
-            const img = wrapper.querySelector('img');
-            if (img && lightbox && lightboxImg) {
-                // 이벤트 전파를 막고 라이트박스 띄우기
-                e.preventDefault();
+        if (!wrapper) return;
+
+        // 이벤트 전파 중단 (모달 닫힘 방지)
+        e.preventDefault();
+        e.stopPropagation();
+
+        const img = wrapper.querySelector('img');
+        if (img && lightbox && lightboxImg) {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('show');
+        }
+    }
+
+    // [1] 문서 전체에 위임 이벤트 걸기 (기본)
+    document.body.addEventListener('click', handleImageClick, true); // true: 캡처링 단계에서 미리 가로챔
+
+    // [2] 안전장치: 페이지 로드 후 모든 .img-wrapper에 직접 이벤트 또 붙이기
+    setTimeout(() => {
+        const wrappers = document.querySelectorAll('.img-wrapper');
+        wrappers.forEach(div => {
+            div.style.cursor = 'zoom-in'; // 커서 강제 설정
+            div.onclick = function(e) {   // onclick 속성으로 강제 덮어쓰기
                 e.stopPropagation();
-                
-                lightboxImg.src = img.src;
-                lightbox.classList.add('show');
-                return; // 동작 완료 후 종료
-            }
-        }
+                const img = this.querySelector('img');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('show');
+                }
+            };
+        });
+    }, 500); // 0.5초 뒤 실행
 
-        // 2. 라이트박스 닫기 (검은 배경 클릭 시)
-        if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
-            if (lightbox) lightbox.classList.remove('show');
-            // 모달이 없는 상태라면 스크롤 풀기
-            if (!document.querySelector('.modal.show')) {
-                document.body.style.overflow = "auto";
+    // 라이트박스 닫기
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('show');
             }
-            return;
-        }
+        });
+    }
 
-        // 3. 모달 열기 (프로젝트 카드 클릭)
+    // 모달 열기/닫기 로직 (기존 유지)
+    document.addEventListener('click', function(e) {
+        // 이미지 클릭은 위에서 처리했으니 패스
+        if (e.target.closest('.img-wrapper')) return;
+
+        // 모달 열기
         const card = e.target.closest('.project-card');
         if (card) {
             const modalId = card.getAttribute('data-modal');
@@ -822,15 +839,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // 4. 모달 닫기 (X버튼 또는 모달 배경 클릭)
+        // 모달 닫기
         if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
             document.querySelectorAll('.modal').forEach(el => el.classList.remove('show'));
-            if (lightbox) lightbox.classList.remove('show');
             document.body.style.overflow = "auto";
         }
     });
 
-    // 스크롤 애니메이션
+    // 스크롤 애니메이션 및 Top 버튼
     function checkReveal() {
         const triggerBottom = window.innerHeight * 0.8;
         revealElements.forEach(el => {
@@ -839,7 +855,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 스크롤 이벤트 (Top 버튼 & 애니메이션)
     window.addEventListener('scroll', () => {
         checkReveal();
         if (toTopBtn) {
@@ -848,12 +863,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Top 버튼 클릭
     if (toTopBtn) {
         toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    // ESC 키로 닫기
     window.addEventListener('keydown', e => {
         if (e.key === "Escape") {
             document.querySelectorAll('.modal, .lightbox').forEach(el => el.classList.remove('show'));
@@ -861,7 +874,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 초기 실행
     checkReveal();
 });
 </script>
