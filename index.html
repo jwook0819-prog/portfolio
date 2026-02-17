@@ -537,25 +537,24 @@
                 </div>
             </div>
             
-          <div class="grid-stats-container" style="margin-top:20px;">
-            <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
-                <div class="stat-card-mini highlight-card" style="width:100%;">
-                    <span class="stat-num">Automation</span>
-                    <span class="stat-txt">Airflow 기반 스케줄링</span>
-                 </div>
+            <div class="grid-stats-container" style="margin-top:20px;">
+              <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
                   <div class="stat-card-mini highlight-card" style="width:100%;">
-                     <span class="stat-num">300+</span>
-                    <span class="stat-txt">대용량 데이터 처리</span>
-                   </div>
-               </div>
-             </div>
-           </div>
-         </div>
+                      <span class="stat-num">Automation</span>
+                      <span class="stat-txt">Airflow 기반 스케줄링</span>
+                  </div>
+                  <div class="stat-card-mini highlight-card" style="width:100%;">
+                      <span class="stat-num">300+</span>
+                      <span class="stat-txt">대용량 데이터 처리</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
- </div>
-
-<div id="sbsProjectModal" class="modal" tabindex="-1" onclick="closeModal(event)">
+    </div>
+  </div>
+</div> <div id="sbsProjectModal" class="modal" tabindex="-1" onclick="closeModal(event)">
   <div class="modal-content" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModalBtn('sbsProjectModal')">&times;</button>
     <div class="modal-inner">
@@ -689,32 +688,32 @@
   <div class="section-container">
     <h2 class="section-title">Certification</h2>
     <div class="cert-grid">
-      <div class="cert-card highlight">
+      <div class="cert-card highlight reveal">
         <h3>건강운동관리사</h3>
         <p class="cert-org">문화체육관광부</p>
         <span class="cert-year">2022</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
         <h3>2급 교원자격증</h3>
         <p class="cert-org">교육부</p>
         <span class="cert-year">2022</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
         <h3>2급 생활스포츠지도사</h3>
         <p class="cert-org">보디빌딩 | 문체부</p>
         <span class="cert-year">2019</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
         <h3>유소년스포츠지도사</h3>
         <p class="cert-org">보디빌딩 | 문체부</p>
         <span class="cert-year">2022</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
         <h3>노인스포츠지도사</h3>
         <p class="cert-org">보디빌딩 | 문체부</p>
         <span class="cert-year">2021</span>
       </div>
-      <div class="cert-card">
+      <div class="cert-card reveal">
         <h3>1종보통운전면허</h3>
         <p class="cert-org">경찰청</p>
         <span class="cert-year">2016</span>
@@ -784,15 +783,13 @@ function openModal(modalId) {
     if (modal) {
         modal.classList.add('show');
         document.body.classList.add('scroll-locked'); // 몸통 스크롤 잠금
-        modal.focus(); // [핵심] 모달로 포커스 강제 이동 (스크롤 가능하게 함)
+        modal.focus(); // [핵심] 모달로 포커스 강제 이동
     }
 }
 
 // 2. 모달 닫기 (배경 클릭)
 function closeModal(event) {
-    // 라이트박스가 떠있으면 모달 닫기 금지
     if (document.getElementById('lightbox').classList.contains('show')) return;
-
     if (event.target.classList.contains('modal')) {
         event.target.classList.remove('show');
         document.body.classList.remove('scroll-locked'); // 잠금 해제
@@ -810,34 +807,26 @@ function closeModalBtn(modalId) {
 
 // 3. 라이트박스 열기
 function openLightbox(element) {
-    // 텍스트만 있는 래퍼인지 확인
     const img = element.querySelector('img');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-target');
 
     if (img && lightbox && lightboxImg) {
-        // 이미지가 없으면 무시
         if(!img.src) return;
-
         lightboxImg.src = img.src;
         lightbox.classList.add('show');
     }
 }
 
-// 4. 라이트박스 닫기 (문제의 핵심 해결)
+// 4. 라이트박스 닫기
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {
         lightbox.classList.remove('show');
-        
-        // 라이트박스가 사라진 후, 뒤에 열려있는 모달이 있는지 확인
         const activeModal = document.querySelector('.modal.show');
-        
         if (activeModal) {
-            // 모달이 열려있다면? body 잠금은 유지하되, 스크롤 제어권을 모달에게 강제 부여
-            activeModal.focus(); 
+            activeModal.focus(); // 모달이 켜져있으면 초점 복구
         } else {
-            // 모달도 없다면? body 잠금 해제
             document.body.classList.remove('scroll-locked');
         }
     }
@@ -853,28 +842,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!wrapper.querySelector('img')) wrapper.style.cursor = 'default';
     });
 
-    // 스크롤 애니메이션
-    window.addEventListener('scroll', () => {
-        const triggerBottom = window.innerHeight * 0.8;
+    // 스크롤 애니메이션 함수 분리
+    function checkReveal() {
+        const triggerBottom = window.innerHeight * 0.85; // 애니메이션 등장 여유 폭 수정
         reveals.forEach(el => {
             const top = el.getBoundingClientRect().top;
             if (top < triggerBottom) el.classList.add('active');
         });
 
-        if (window.scrollY > 300) toTopBtn.classList.add('show');
-        else toTopBtn.classList.remove('show');
-    });
+        if (toTopBtn) {
+            if (window.scrollY > 300) toTopBtn.classList.add('show');
+            else toTopBtn.classList.remove('show');
+        }
+    }
+
+    // 스크롤 시마다 애니메이션 체크
+    window.addEventListener('scroll', checkReveal);
+    
+    // [핵심 추가] 페이지가 처음 로드되었을 때, 혹은 메뉴 이동 시 화면이 투명하게 비어있는 현상 해결
+    checkReveal(); // 즉시 1회 실행!
 
     // ESC 키 제어
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             const lightbox = document.getElementById('lightbox');
-            // 1. 라이트박스가 있으면 닫기
-            if (lightbox.classList.contains('show')) {
+            if (lightbox && lightbox.classList.contains('show')) {
                 closeLightbox();
-            } 
-            // 2. 라이트박스 없으면 모달 닫기
-            else {
+            } else {
                 const openModal = document.querySelector('.modal.show');
                 if (openModal) {
                     openModal.classList.remove('show');
