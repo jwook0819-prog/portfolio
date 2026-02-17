@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <title>Kim Jongwook | Healthcare · Rehabilitation · R&D Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
@@ -154,7 +152,7 @@
 
     <div class="project-list">
       
-      <div class="card project-card standard reveal" onclick="openModal('dxDtxModal')">
+      <div class="card project-card standard reveal" data-modal="dxDtxModal">
         <div class="project-thumb">
           <img src="./images/project1-thumb.png" alt="Dx & DTx">
         </div>
@@ -169,7 +167,7 @@
         </div>
       </div>
 
-      <div class="card project-card standard reveal" onclick="openModal('cesProjectModal')">
+      <div class="card project-card standard reveal" data-modal="cesProjectModal">
         <div class="project-thumb">
           <img src="./images/ces-field.png" alt="CES 2026">
         </div>
@@ -184,7 +182,7 @@
         </div>
       </div>
 
-      <div class="card project-card standard reveal" onclick="openModal('publicProjectModal')">
+      <div class="card project-card standard reveal" data-modal="publicProjectModal">
         <div class="project-thumb">
             <div class="thumb-placeholder">Clinical Proof</div>
         </div>
@@ -199,13 +197,13 @@
         </div>
       </div>
 
-     <div class="card project-card standard reveal" onclick="openModal('mskPipelineModal')">
+     <div class="card project-card standard reveal" data-modal="mskPipelineModal">
       <div class="project-thumb">
        <div class="thumb-placeholder" style="background:#0f172a; color:white;">Data Engineering</div>
       </div>
       <div class="project-content">
        <span class="category-tag">Data Engineering · ETL</span>
-       <h3>근골격계 건강 데이터 파이프라인 (ETL)</h3>
+       <h3>근골격계 데이터 파이프라인 구축</h3>
        <p class="project-desc">Airflow와 Docker를 활용해 300건 이상의 헬스케어 데이터를 매일 자동으로 처리하고 시각화하는 ETL 시스템을 구축했습니다.</p>
        <div class="tags">
          <span class="tag">Airflow</span>
@@ -215,7 +213,7 @@
       </div>
     </div>
 
-      <div class="card project-card standard reveal" onclick="openModal('sbsProjectModal')">
+      <div class="card project-card standard reveal" data-modal="sbsProjectModal">
         <div class="project-thumb">
           <img src="./images/sbs-thumb.png" alt="SBS 육체실험2 출연"> 
         </div>
@@ -235,141 +233,78 @@
   </div>
 </section>
 
-<div id="dxDtxModal" class="modal" tabindex="-1" onclick="closeModal(event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModalBtn('dxDtxModal')">&times;</button>
+<div id="dxDtxModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
     <div class="modal-inner">
         <h2 class="modal-main-title">AI 근골격계 Dx & DTx 통합 솔루션 개발</h2>
         
         <div class="modal-summary-grid">
             <div class="summary-item"><strong>역할</strong> 임상 로직 설계, 알고리즘 검증, UI/UX 기획</div>
-            <div class="summary-item"><strong>핵심기술</strong> Muscularskeletal 측정 로직, 맞춤형 운동처방 로직</div>
+            <div class="summary-item"><strong>핵심기술</strong> Computer Vision, 운동처방 알고리즘</div>
         </div>
 
         <div class="modal-section">
-            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 기능 개발</h3>
+            <h3 class="part-title"><span class="part-label">Dx</span> AI 근골격계 검진 시스템</h3>
             
-            <div class="modal-sub-section">
-                <h4 class="sub-title-badge">1. 자세검사 (Posture Analysis)</h4>
-                <div class="modal-grid">
-                    <div class="grid-text">
-                        <div class="step-list">
-                            <div class="step-item">
-                                <span class="step-num">01</span>
-                                <div class="step-content">
-                                    <strong>3면 정렬 및 균형 분석</strong>
-                                    <p>Frontal Plane, Sagittal Plane, Transverse Plane 3개 면의 정렬, 균형 분석.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <span class="step-num">02</span>
-                                <div class="step-content">
-                                    <strong>알고리즘 설계</strong>
-                                    <p>손상 근육 매칭 및 운동처방 알고리즘 설계.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <span class="step-num">03</span>
-                                <div class="step-content">
-                                    <strong>UI 기획</strong>
-                                    <p>관리자 페이지, 검사 결과지 UI 기획.</p>
-                                </div>
+            <div class="modal-grid">
+                <div class="grid-text">
+                    <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-num">1</span>
+                            <div class="step-content">
+                                <strong>자세 검사 (Posture Analysis)</strong>
+                                <p>Frontal/Sagittal/Transverse 3면의 신체 정렬 분석 로직 및 결과지 UI 기획</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid-images">
-                        <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/posture1-1.png" alt="자세검사1"></div>
-                        <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/posture1-2.png" alt="자세검사2"></div>
+                        <div class="step-item">
+                            <span class="step-num">2</span>
+                            <div class="step-content">
+                                <strong>관절 가동범위 (ROM)</strong>
+                                <p>Neck, Shoulder, Hip, Knee 등 6대 관절 20개 동작의 정상/비정상 판단 기준 수립</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-num">3</span>
+                            <div class="step-content">
+                                <strong>기능성 움직임 (Movement)</strong>
+                                <p>Overhead Squat 등 다관절 움직임 시 보상작용(Compensation) 탐지 알고리즘 설계</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-sub-section" style="margin-top:40px;">
-                <h4 class="sub-title-badge">2. 관절기능검사 (ROM)</h4>
-                <div class="modal-grid">
-                    <div class="grid-text">
-                        <div class="step-list">
-                            <div class="step-item">
-                                <span class="step-num">01</span>
-                                <div class="step-content">
-                                    <strong>측정 로직 개발</strong>
-                                    <p>Cervical, Shoulder, Trunk, Hip, Knee, Ankle 6개 관절, 20개 측정 로직 개발.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <span class="step-num">02</span>
-                                <div class="step-content">
-                                    <strong>알고리즘 설계</strong>
-                                    <p>손상 근육 매칭 및 운동처방 알고리즘 설계.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <span class="step-num">03</span>
-                                <div class="step-content">
-                                    <strong>UI 기획</strong>
-                                    <p>관리자 페이지, 검사 결과지 UI 기획.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-images">
-                        <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/joint-1.png" alt="관절기능1"></div>
-                        <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/joint-2.png" alt="관절기능2"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-sub-section" style="margin-top:40px;">
-                <h4 class="sub-title-badge">3. Movement Screening</h4>
-                <div class="modal-grid">
-                    <div class="grid-text">
-                        <div class="step-list">
-                            <div class="step-item">
-                                <span class="step-num">01</span>
-                                <div class="step-content">
-                                    <strong>보상 작용 탐지</strong>
-                                    <p>다관절 움직임 분석을 통한 보상 작용 탐지 로직을 설계.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <span class="step-num">02</span>
-                                <div class="step-content">
-                                    <strong>알고리즘 설계</strong>
-                                    <p>손상 근육 매칭 및 운동처방 알고리즘 설계.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-images">
-                        <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/movement-1.png" alt="움직임분석"></div>
-                    </div>
+                <div class="grid-images">
+                    <div class="img-wrapper"><img src="./images/posture1-1.png" alt="자세검사 분석화면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/joint-1.png" alt="ROM 측정화면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/movement-1.png" alt="움직임 분석화면" class="zoomable"></div>
                 </div>
             </div>
         </div>
 
         <div class="modal-section border-top" style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #f1f5f9;">
-            <h3 class="part-title"><span class="part-label">DTx</span> AI 근골격계 디지털 치료제 개발</h3>
+            <h3 class="part-title"><span class="part-label">DTx</span> 맞춤형 운동처방 알고리즘</h3>
             <div class="modal-grid">
                 <div class="grid-text">
-                    <div class="step-list">
+                     <div class="step-list">
                         <div class="step-item">
-                            <span class="step-num">01</span>
+                            <span class="step-num">1</span>
                             <div class="step-content">
-                                <strong>알고리즘 기획</strong>
-                                <p>개인 맞춤 운동처방 알고리즘 기획.</p>
+                                <strong>개인화 알고리즘 (Algorithm)</strong>
+                                <p>검진 결과(Data)와 질환별 금기 동작을 매칭하여 '오늘의 운동' 자동 생성 로직 구현</p>
                             </div>
                         </div>
                         <div class="step-item">
-                            <span class="step-num">02</span>
+                            <span class="step-num">2</span>
                             <div class="step-content">
-                                <strong>UI/UX 기획</strong>
-                                <p>앱 UI/UX 기획.</p>
+                                <strong>임상 피드백 (Clinical Loop)</strong>
+                                <p>사용자의 통증 수준(VAS) 및 수행도에 따라 난이도가 자동 조절되는 프로토콜 설계</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="grid-images">
-                    <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/project1-thumb.png" alt="DTx 앱 화면"></div>
+                    <div class="img-wrapper"><img src="./images/project1-thumb.png" alt="DTx 앱 구동화면" class="zoomable"></div>
                 </div>
             </div>
         </div>
@@ -377,58 +312,45 @@
   </div>
 </div>
 
-<div id="publicProjectModal" class="modal" tabindex="-1" onclick="closeModal(event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModalBtn('publicProjectModal')">&times;</button>
+<div id="publicProjectModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
     <div class="modal-inner">
-      <h2 class="modal-main-title">학생 체형 불균형 분석 대시보드 및 예방사업</h2>
+      <h2 class="modal-main-title">학생 체형 불균형 분석 및 예방사업</h2>
       
       <div class="modal-summary-grid" style="align-items: center;">
-        <div class="summary-item"><strong>사업처</strong> 경기도교육청 (40개교)</div>
-        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선, 7,281명 데이터 분석</div>
+        <div class="summary-item"><strong>대상</strong> 경기도교육청 40개교 (7,281명)</div>
+        <div class="summary-item"><strong>성과</strong> 어깨 균형도 14% 개선</div>
         <div class="summary-actions" style="margin-left: auto; display: flex; gap: 10px;">
-           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드 보기</a>
-           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 GitHub 코드</a>
+           <a href="https://schoolproject8000.streamlit.app/" target="_blank" class="tag" style="background:#ff4b4b; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🖥️ 대시보드</a>
+           <a href="https://github.com/jwook0819-prog/school_project" target="_blank" class="tag" style="background:#333; color:white; border:none; padding:8px 15px; text-decoration:none; font-weight:700;">🐙 Code</a>
         </div>
       </div>
 
-      <div class="modal-section" style="margin-top: 20px;">
-         <h3 class="part-title"><span class="part-label">Tech Stack</span> 데이터 분석 및 시각화 기술</h3>
-         <div class="skill-tags" style="justify-content: flex-start;">
-            <span class="skill-tag">Python 3.9</span>
-            <span class="skill-tag">Streamlit</span>
-            <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">Plotly</span>
-            <span class="skill-tag">GitHub Actions</span>
-         </div>
-      </div>
-
       <div class="modal-section">
-        <h3 class="part-title">주요 분석 기능 및 성과</h3>
+        <h3 class="part-title">데이터 분석 프로세스 및 성과</h3>
         <div class="modal-grid">
           <div class="grid-text">
-            <p style="margin-bottom:15px;">8,000여 명의 학생 데이터를 분석하여 성장기 체형 불균형을 추적하고 시각화하는 웹 대시보드를 구축했습니다.</p>
-            
             <div class="step-list">
                 <div class="step-item">
                     <span class="step-num">1</span>
                     <div class="step-content">
-                        <strong>전신 균형 시각화</strong>
-                        <p>6대 관절(Cervical, Shoulder, Trunk, Hip, Knee, Ankle)의 밸런스를 <strong>레이더 차트</strong>로 시각화.</p>
+                        <strong>전신 균형 시각화 (Visualization)</strong>
+                        <p>Streamlit을 활용해 6대 관절 밸런스를 레이더 차트(Radar Chart)로 구현, 학교/학년별 필터링 기능 제공</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <span class="step-num">2</span>
                     <div class="step-content">
-                        <strong>상관관계 분석</strong>
-                        <p>신체 부위 간 불균형 전이 현상을 <strong>히트맵(Heatmap)</strong>으로 통계적 분석.</p>
+                        <strong>상관관계 분석 (Correlation)</strong>
+                        <p>거북목이 골반 불균형에 미치는 영향을 히트맵(Heatmap)으로 분석하여 예방 운동의 근거 마련</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <span class="step-num">3</span>
                     <div class="step-content">
-                        <strong>성과 추적 및 보안</strong>
-                        <p>1학기 vs 2학기 데이터 비교를 통해 <strong>어깨 균형 14% 개선</strong> 입증. 개인정보 비식별화 처리.</p>
+                        <strong>개선 효과 입증 (Validation)</strong>
+                        <p>1학기(Pre) vs 2학기(Post) 비교 분석 결과, 주요 관절 불균형 14% 감소 확인</p>
                     </div>
                 </div>
             </div>
@@ -440,17 +362,17 @@
                </div>
                <div class="stat-card-mini highlight-card" style="flex:1;">
                   <span class="stat-num">14<span>%↑</span></span>
-                  <span class="stat-txt">체형 불균형 개선율</span>
+                  <span class="stat-txt">균형 개선율</span>
                </div>
             </div>
           </div>
           
           <div class="grid-images">
-             <div class="img-wrapper" style="background:#0f172a; display:flex; align-items:center; justify-content:center; color:white;" onclick="openLightbox(this)">
-                <p style="font-weight:bold;">Dashboard Screen</p>
+             <div class="img-wrapper" style="background:#0f172a; display:flex; align-items:center; justify-content:center; color:white;">
+                <p style="font-weight:bold;">Dashboard Screen 1</p>
              </div>
-             <div class="img-wrapper" style="background:#334155; display:flex; align-items:center; justify-content:center; color:white;" onclick="openLightbox(this)">
-                 <p style="font-weight:bold;">Radar Chart</p>
+             <div class="img-wrapper" style="background:#334155; display:flex; align-items:center; justify-content:center; color:white;">
+                 <p style="font-weight:bold;">Analysis Chart</p>
              </div>
           </div>
         </div>
@@ -459,9 +381,9 @@
   </div>
 </div>
 
-<div id="cesProjectModal" class="modal" tabindex="-1" onclick="closeModal(event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModalBtn('cesProjectModal')">&times;</button>
+<div id="cesProjectModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
     <div class="modal-inner">
         <h2 class="modal-main-title">CES 2026 글로벌 기술 전시 총괄 프로젝트</h2>
         <div class="modal-summary-grid">
@@ -473,8 +395,8 @@
                     <p>전시 전략 수립부터 기술 시나리오 설계, 현지 운영 전 과정을 총괄했습니다.</p>
                 </div>
                 <div class="grid-images">
-                    <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/ces-field.png" alt="현장"></div>
-                    <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/ces-demo.png" alt="시연"></div>
+                    <div class="img-wrapper"><img src="./images/ces-field.png" alt="현장" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/ces-demo.png" alt="시연" class="zoomable"></div>
                 </div>
             </div>
         </div>
@@ -482,9 +404,9 @@
   </div>
 </div>
 
-<div id="mskPipelineModal" class="modal" tabindex="-1" onclick="closeModal(event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModalBtn('mskPipelineModal')">&times;</button>
+<div id="mskPipelineModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
     <div class="modal-inner">
       <h2 class="modal-main-title">근골격계 건강 데이터 파이프라인 (ETL)</h2>
       
@@ -511,52 +433,37 @@
         <h3 class="part-title">시스템 아키텍처 및 구현 기능</h3>
         <div class="modal-grid">
           <div class="grid-text">
-            <p style="margin-bottom:15px;">수기 또는 엑셀로 관리되던 헬스케어 데이터를 <strong>자동화된 파이프라인</strong>을 통해 데이터베이스에 적재하고 시각화하는 전체 과정을 설계했습니다.</p>
-            
-            <div class="step-list">
-                <div class="step-item">
-                    <span class="step-num">1</span>
-                    <div class="step-content">
-                        <strong>Containerization</strong>
-                        <p>Docker Compose를 사용하여 Airflow, DB, Web Server 등 5개 컨테이너 환경 통합 구축.</p>
-                    </div>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">2</span>
-                    <div class="step-content">
-                        <strong>ETL Automation</strong>
-                        <p>Airflow DAG를 활용해 데이터 추출(Extract), 결측치/이상치 정제(Transform), DB 적재(Load) 과정 자동화.</p>
-                    </div>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">3</span>
-                    <div class="step-content">
-                        <strong>Data Quality & Viz</strong>
-                        <p>유효하지 않은 값 필터링 로직 구현 및 Apache Superset 연동 실시간 대시보드 제공.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="grid-stats-container" style="margin-top:20px;">
-              <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
-                  <div class="stat-card-mini highlight-card" style="width:100%;">
-                      <span class="stat-num">Automation</span>
-                      <span class="stat-txt">Airflow 기반 스케줄링</span>
-                  </div>
-                  <div class="stat-card-mini highlight-card" style="width:100%;">
-                      <span class="stat-num">300+</span>
-                      <span class="stat-txt">대용량 데이터 처리</span>
-                  </div>
-              </div>
-            </div>
+            <p>수기 또는 엑셀로 관리되던 헬스케어 데이터를 <strong>자동화된 파이프라인</strong>을 통해 데이터베이스에 적재하고 시각화하는 전체 과정을 설계했습니다.</p>
+            <ul class="detail-list" style="margin-top:15px;">
+              <li><strong>Containerization:</strong> Docker Compose를 사용하여 Airflow, DB, Web Server 등 5개 컨테이너 환경 통합 구축</li>
+              <li><strong>ETL Automation:</strong> Airflow DAG를 활용해 데이터 추출(Extract), 결측치/이상치 정제(Transform), DB 적재(Load) 과정 자동화</li>
+              <li><strong>Data Quality:</strong> 300건 데이터 중 유효하지 않은 값(NULL, 범위 오류)을 필터링하는 전처리 로직 구현</li>
+              <li><strong>Visualization:</strong> 적재된 데이터를 Apache Superset과 연동하여 연령별 위험도, 검사 현황 등을 실시간 대시보드로 제공</li>
+            </ul>
+          </div>
+          
+      <div class="grid-stats-container">
+        <div class="grid-images" style="display:flex; flex-direction:column; gap:10px; width:100%;">
+            <div class="stat-card-mini highlight-card" style="width:100%;">
+                <span class="stat-num">Automation</span>
+                <span class="stat-txt">Airflow 기반 스케줄링</span>
+             </div>
+              <div class="stat-card-mini highlight-card" style="width:100%;">
+                 <span class="stat-num">300+</span>
+                <span class="stat-txt">대용량 데이터 처리</span>
+               </div>
+           </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div> <div id="sbsProjectModal" class="modal" tabindex="-1" onclick="closeModal(event)">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModalBtn('sbsProjectModal')">&times;</button>
+     </div>
+
+     </div>
+   </div>
+ </div>  
+
+<div id="sbsProjectModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
     <div class="modal-inner">
         <h2 class="modal-main-title">SBS 육체실험2: 맨발걷기의 과학적 실증</h2>
         <div class="modal-summary-grid">
@@ -568,37 +475,19 @@
             <h3 class="part-title">수행 및 협업 내용</h3>
             <div class="modal-grid">
                 <div class="grid-text">
-                    <div class="step-list">
-                        <div class="step-item">
-                            <span class="step-num">1</span>
-                            <div class="step-content">
-                                <strong>실험 설계</strong>
-                                <p>맨발걷기 전후 뇌파(EEG) 변화를 측정하는 실험 프로토콜 설계.</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <span class="step-num">2</span>
-                            <div class="step-content">
-                                <strong>제작 협업</strong>
-                                <p>PD, 작가와 소통하며 전문적인 연구 내용을 방송 언어로 시각화.</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <span class="step-num">3</span>
-                            <div class="step-content">
-                                <strong>데이터 분석</strong>
-                                <p>실험 참여자들의 뇌파 지표 분석을 통한 건강 증진 효과 입증.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="detail-list">
+                        <li><strong>실험 설계:</strong> 맨발걷기 전후 뇌파(EEG) 변화를 측정하는 실험 프로토콜 설계</li>
+                        <li><strong>제작 협업:</strong> PD, 작가와 소통하며 전문적인 연구 내용을 방송 언어로 시각화</li>
+                        <li><strong>데이터 분석:</strong> 실험 참여자들의 뇌파 지표 분석을 통한 건강 증진 효과 입증</li>
+                    </ul>
                     
                     <div class="modal-links" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
                         <a href="https://programs.sbs.co.kr/culture/sbsspecial/vod/53591/22000552190" target="_blank" class="tag" style="background:#2563eb; color:white; border:none; padding:10px 15px; text-decoration:none;">📺 SBS 다시보기</a>
                     </div>
                 </div>
                 <div class="grid-images">
-                    <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/sbs-eeg-1.png" alt="뇌파 측정 장면"></div>
-                    <div class="img-wrapper" onclick="openLightbox(this)"><img src="./images/sbs-field-1.png" alt="촬영 현장"></div>
+                    <div class="img-wrapper"><img src="./images/sbs-eeg-1.png" alt="뇌파 측정 장면" class="zoomable"></div>
+                    <div class="img-wrapper"><img src="./images/sbs-field-1.png" alt="촬영 현장" class="zoomable"></div>
                 </div>
             </div>
         </div>
@@ -688,32 +577,32 @@
   <div class="section-container">
     <h2 class="section-title">Certification</h2>
     <div class="cert-grid">
-      <div class="cert-card highlight reveal">
+      <div class="cert-card highlight">
         <h3>건강운동관리사</h3>
         <p class="cert-org">문화체육관광부</p>
         <span class="cert-year">2022</span>
       </div>
-      <div class="cert-card reveal">
+      <div class="cert-card">
         <h3>2급 교원자격증</h3>
         <p class="cert-org">교육부</p>
         <span class="cert-year">2022</span>
       </div>
-      <div class="cert-card reveal">
+      <div class="cert-card">
         <h3>2급 생활스포츠지도사</h3>
         <p class="cert-org">보디빌딩 | 문체부</p>
         <span class="cert-year">2019</span>
       </div>
-      <div class="cert-card reveal">
+      <div class="cert-card">
         <h3>유소년스포츠지도사</h3>
         <p class="cert-org">보디빌딩 | 문체부</p>
         <span class="cert-year">2022</span>
       </div>
-      <div class="cert-card reveal">
+      <div class="cert-card">
         <h3>노인스포츠지도사</h3>
         <p class="cert-org">보디빌딩 | 문체부</p>
         <span class="cert-year">2021</span>
       </div>
-      <div class="cert-card reveal">
+      <div class="cert-card">
         <h3>1종보통운전면허</h3>
         <p class="cert-org">경찰청</p>
         <span class="cert-year">2016</span>
@@ -765,118 +654,86 @@
   </div>
 </section>
 
-<button id="toTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+<button id="toTopBtn">↑</button>
 
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+<div id="lightbox" class="lightbox">
     <span class="lightbox-close">&times;</span>
-    <img class="lightbox-img" id="lightbox-target" onclick="event.stopPropagation()"> 
+    <img class="lightbox-img" id="lightbox-target">
 </div>
 
 <script>
-// ============================================================
-//  [완전판 JS] 스크롤/포커스 제어 로직
-// ============================================================
-
-// 1. 모달 열기
-function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.add('show');
-        document.body.classList.add('scroll-locked'); // 몸통 스크롤 잠금
-        modal.focus(); // [핵심] 모달로 포커스 강제 이동
-    }
-}
-
-// 2. 모달 닫기 (배경 클릭)
-function closeModal(event) {
-    if (document.getElementById('lightbox').classList.contains('show')) return;
-    if (event.target.classList.contains('modal')) {
-        event.target.classList.remove('show');
-        document.body.classList.remove('scroll-locked'); // 잠금 해제
-    }
-}
-
-// 2-1. 모달 닫기 (X 버튼)
-function closeModalBtn(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.remove('show');
-        document.body.classList.remove('scroll-locked');
-    }
-}
-
-// 3. 라이트박스 열기
-function openLightbox(element) {
-    const img = element.querySelector('img');
+document.addEventListener('DOMContentLoaded', function() {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-target');
-
-    if (img && lightbox && lightboxImg) {
-        if(!img.src) return;
-        lightboxImg.src = img.src;
-        lightbox.classList.add('show');
-    }
-}
-
-// 4. 라이트박스 닫기
-function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.classList.remove('show');
-        const activeModal = document.querySelector('.modal.show');
-        if (activeModal) {
-            activeModal.focus(); // 모달이 켜져있으면 초점 복구
-        } else {
-            document.body.classList.remove('scroll-locked');
-        }
-    }
-}
-
-// 초기화 및 이벤트 리스너
-document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
     const toTopBtn = document.getElementById('toTopBtn');
+    const revealElements = document.querySelectorAll('.reveal');
 
-    // 텍스트만 있는 img-wrapper 커서 정리
-    document.querySelectorAll('.img-wrapper').forEach(wrapper => {
-        if (!wrapper.querySelector('img')) wrapper.style.cursor = 'default';
-    });
-
-    // 스크롤 애니메이션 함수 분리
-    function checkReveal() {
-        const triggerBottom = window.innerHeight * 0.85; // 애니메이션 등장 여유 폭 수정
-        reveals.forEach(el => {
-            const top = el.getBoundingClientRect().top;
-            if (top < triggerBottom) el.classList.add('active');
-        });
-
-        if (toTopBtn) {
-            if (window.scrollY > 300) toTopBtn.classList.add('show');
-            else toTopBtn.classList.remove('show');
-        }
+    function closeAllLayers() {
+        document.querySelectorAll('.modal, .lightbox').forEach(el => el.classList.remove('show'));
+        document.body.style.overflow = "auto";
     }
 
-    // 스크롤 시마다 애니메이션 체크
-    window.addEventListener('scroll', checkReveal);
-    
-    // [핵심 추가] 페이지가 처음 로드되었을 때, 혹은 메뉴 이동 시 화면이 투명하게 비어있는 현상 해결
-    checkReveal(); // 즉시 1회 실행!
-
-    // ESC 키 제어
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const lightbox = document.getElementById('lightbox');
-            if (lightbox && lightbox.classList.contains('show')) {
-                closeLightbox();
-            } else {
-                const openModal = document.querySelector('.modal.show');
-                if (openModal) {
-                    openModal.classList.remove('show');
-                    document.body.classList.remove('scroll-locked');
-                }
+    document.addEventListener('click', function(e) {
+        // 모달 열기
+        const card = e.target.closest('.project-card');
+        if (card) {
+            const modalId = card.getAttribute('data-modal');
+            const targetModal = document.getElementById(modalId);
+            if (targetModal) {
+                targetModal.classList.add('show');
+                document.body.style.overflow = "hidden";
             }
+            return;
+        }
+
+        // 이미지 확대 (줌)
+        if (e.target.classList.contains('zoomable')) {
+            e.stopPropagation();
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = e.target.src;
+                lightbox.classList.add('show');
+                document.body.style.overflow = "hidden";
+            }
+            return;
+        }
+
+        // 라이트박스 닫기
+        if (e.target.closest('#lightbox')) {
+            lightbox.classList.remove('show');
+            if (!document.querySelector('.modal.show')) document.body.style.overflow = "auto";
+            return;
+        }
+
+        // 모달 닫기
+        if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
+            closeAllLayers();
         }
     });
+
+    // 스크롤 시 나타나는 애니메이션
+    function checkReveal() {
+        const triggerBottom = window.innerHeight / 5 * 4;
+        revealElements.forEach(el => {
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < triggerBottom) el.classList.add('active');
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        checkReveal();
+        if (window.scrollY > 300) toTopBtn.classList.add('show');
+        else toTopBtn.classList.remove('show');
+    });
+
+    if (toTopBtn) {
+        toTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    window.addEventListener('keydown', e => {
+        if (e.key === "Escape") closeAllLayers();
+    });
+
+    checkReveal();
 });
 </script>
 
