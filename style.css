@@ -66,19 +66,40 @@ section { padding: 90px 20px; width: 100%; }
 }
 .contact a:hover { transform: translateY(-3px); color: #2563eb; border-color: #2563eb; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
+/* =========================================
+   수정된 Nav Cards (Hero 섹션)
+   ========================================= */
 .nav-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 15px; margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 줄바꿈 시에도 항상 완벽한 가운데 정렬 */
+  gap: 12px; /* 카드 사이의 간격 */
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .nav-card {
-  background: #fff; padding: 18px 10px; border-radius: 16px;
-  color: #1e293b; font-weight: 700; font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: 0.3s;
-  display: flex; justify-content: center; align-items: center;
+  background: #fff; 
+  border-radius: 16px;
+  color: #1e293b; 
+  font-weight: 700; 
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
+  transition: 0.3s;
+  
+  /* 카드의 크기를 텍스트 길이에 상관없이 균일하게 맞춤 */
+  width: 100px;
+  height: 56px; /* 기존 padding: 18px 10px; 과 비슷한 높이 유지 */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
-.nav-card:hover { transform: translateY(-5px); color: #2563eb; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+.nav-card:hover { 
+  transform: translateY(-5px); 
+  color: #2563eb; 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+}
 
 /* About Me Box */
 .about-content {
