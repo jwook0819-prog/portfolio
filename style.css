@@ -36,35 +36,106 @@ section { padding: 90px 20px; width: 100%; }
 }
 
 /* =========================================
-   2. Hero 섹션 (상단 프로필)
+   2. Hero 섹션 (상단 프로필) - 디자인 강화 버전
    ========================================= */
 .hero {
   min-height: 100vh;
   display: flex; justify-content: center; align-items: center;
-  background: linear-gradient(135deg, #fff 0%, #f1f5f9 100%);
+  /* 기존의 단순한 그라데이션 대신 밝은 배경 설정 */
+  background-color: #f8fafc;
   text-align: center; padding: 40px 20px;
+  position: relative;
+  overflow: hidden; /* 배경 빛 효과가 밖으로 나가지 않게 제어 */
 }
 
-.hero-main { max-width: 800px; width: 100%; }
+/* 배경에 부드럽게 움직이는 빛(Blob) 효과 추가 */
+.hero::before, .hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px); /* 부드럽게 퍼지는 효과 */
+  z-index: 0;
+  animation: floatBlob 10s infinite alternate ease-in-out;
+}
 
-.profile-container { margin-bottom: 30px; display: flex; justify-content: center; }
+.hero::before {
+  width: 400px; height: 400px;
+  background: #dbeafe; /* 헬스케어 느낌의 밝은 블루 */
+  top: -100px; left: -100px;
+}
+
+.hero::after {
+  width: 350px; height: 350px;
+  background: #e0e7ff; /* R&D 느낌의 연한 인디고 */
+  bottom: -50px; right: -50px;
+  animation-delay: -5s; /* 움직임 타이밍을 다르게 설정 */
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+.hero-main { 
+  max-width: 800px; 
+  width: 100%; 
+  position: relative; 
+  z-index: 1; /* 배경 빛 효과보다 앞으로 오게 설정 */
+}
+
+/* 프로필 사진 주변에 은은하게 퍼지는 파동(Pulse) 효과 */
+.profile-container { 
+  margin-bottom: 30px; 
+  display: flex; justify-content: center; 
+  position: relative;
+}
+
 .hero-profile {
   width: 170px; height: 170px;
   border-radius: 50%; border: 6px solid #fff;
   box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   object-fit: cover;
+  position: relative;
+  z-index: 2;
+  animation: pulseGlow 3s infinite; /* 애니메이션 적용 */
 }
 
-.name { font-size: 3.2rem; font-weight: 800; margin-bottom: 15px; color: #1e293b; letter-spacing: -1px; }
-.subtitle { font-size: 1.3rem; color: #475569; margin-bottom: 40px; font-weight: 500; }
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.2); }
+  70% { box-shadow: 0 0 0 20px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
 
+/* 이름에 포인트 그라데이션 적용 */
+.name { 
+  font-size: 3.5rem; /* 크기 살짝 키움 */
+  font-weight: 900; 
+  margin-bottom: 15px; 
+  /* 텍스트에만 그라데이션 입히기 */
+  background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1.5px; 
+}
+
+.subtitle { 
+  font-size: 1.3rem; color: #475569; margin-bottom: 40px; font-weight: 600; 
+}
+
+/* 연락처 버튼 디자인 개선 */
 .contact { margin-bottom: 50px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 .contact a {
-  padding: 10px 20px; background: #fff; border-radius: 50px;
-  font-weight: 600; font-size: 1rem; color: #334155;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0;
+  padding: 12px 24px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+  border-radius: 50px; font-weight: 700; font-size: 1rem; color: #334155;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0;
 }
-.contact a:hover { transform: translateY(-3px); color: #2563eb; border-color: #2563eb; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.contact a:hover { 
+  transform: translateY(-3px); 
+  color: #fff; 
+  background: #2563eb; /* 마우스 올렸을 때 블루로 변환 */
+  border-color: #2563eb; 
+  box-shadow: 0 10px 20px rgba(37,99,235,0.2); 
+}
 
 /* =========================================
    수정된 Nav Cards (Hero 섹션)
