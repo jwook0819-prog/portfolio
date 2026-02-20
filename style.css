@@ -186,7 +186,6 @@ section { padding: 90px 20px; width: 100%; }
   display: flex; 
   align-items: center; 
   justify-content: center;
-  padding: 15px; /* 이미지가 테두리에 너무 딱 붙지 않도록 약간의 여백 추가 */
 }
 
 .project-thumb img { 
