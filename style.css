@@ -177,22 +177,28 @@ section { padding: 90px 20px; width: 100%; }
 .project-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
 
 /* =========================================
-   수정된 Projects 썸네일
+   최종 수정된 Projects 썸네일 (꽉 채우기 + 상단 정렬)
    ========================================= */
 .project-thumb {
   height: 220px; 
-  background: #f8fafc; /* 필요하다면 배경색을 #fff(흰색)으로 변경하셔도 좋습니다 */
+  background: #f8fafc; /* 이미지가 로딩되기 전이나 투명 배경일 때 보일 색상 */
   overflow: hidden;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
+  /* 기존의 flex, align-items, padding 등은 제거하여 이미지가 박스에 딱 붙게 합니다 */
+  position: relative;
 }
 
 .project-thumb img { 
   width: 100%; 
   height: 100%; 
-  object-fit: contain; /* cover(꽉 채우기)에서 contain(비율 유지하며 다 보여주기)으로 변경 */
-  transition: 0.6s; 
+  object-fit: cover; /* 다시 빈 공간 없이 꽉 채웁니다 */
+  object-position: top center; /* 핵심! 이미지를 상단 가운데 기준으로 정렬하여 윗부분이 잘리지 않게 합니다 */
+  transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* 줌 효과를 더 부드럽게 */
+}
+
+/* 마우스 호버 시 확대 효과를 아주 미세하게 변경하거나 제거합니다 */
+.project-card:hover .project-thumb img { 
+  transform: scale(1.03); /* 기존 1.08 -> 1.03으로 변경하여 아주 살짝만 움직이는 느낌을 줍니다. */
+  /* 만약 확대가 아예 없는 게 좋으시면 위 한 줄을 지우시면 됩니다. */
 }
 
 
