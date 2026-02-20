@@ -196,9 +196,6 @@ section { padding: 90px 20px; width: 100%; }
   transition: 0.6s; 
 }
 
-.project-card:hover .project-thumb img { 
-  transform: scale(1.05); /* 확대 배율을 1.08에서 1.05로 살짝 낮춰서 덜 잘리게 조정 */
-}
 
 .project-content { padding: 30px; flex: 1; display: flex; flex-direction: column; }
 .category-tag {
